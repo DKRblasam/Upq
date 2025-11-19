@@ -1,7 +1,6 @@
 
 ## 📄 `Frontend/README.md`
 
-```markdown
 # 🎨 Frontend - Astro 5
 
 Interfaz web construida con Astro 5 que consume la API REST del backend.
@@ -50,6 +49,7 @@ pnpm install
 cp .env.example .env
 
 # Editar URL de la API
+# Para obtener las variables comunicate con algun admin
 nano .env
 ```
 
