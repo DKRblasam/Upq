@@ -41,8 +41,8 @@ Sistema de gestión de aprendizaje (LMS) interno para administración de carrera
 ### 1. Clonar repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
+git clone https://github.com/DKRblasam/Upq.git
+cd upq
 ```
 
 ### 2. Configurar Backend
@@ -51,7 +51,7 @@ cd tu-repo
 cd Backend
 pnpm install
 cp .env.example .env
-# Edita .env con tus credenciales de MySQL
+# Edita .env con las credenciales de MySQL que te proporcionamos
 pnpm dev
 ```
 
@@ -61,7 +61,7 @@ pnpm dev
 cd Frontend
 pnpm install
 cp .env.example .env
-# Configura la URL de la API
+# Configura la URL de la API con la API proporcionada
 pnpm dev
 ```
 
@@ -121,8 +121,16 @@ Lee nuestra [Guía de Contribución](./CONTRIBUTING.md) antes de enviar PRs.
 
 ## 📧 Contacto
 
-Para dudas o sugerencias, abre un issue en GitHub.
+Para dudas o sugerencias, abre un issue en GitHub o contactarnos directamente **indicando la duda o problema**.
+# David Blas 🫡
+- 📧 [Email](mailto:j7454793@gmail.com)
+- 📱 [Teléfono](tel:+5272062173388)
+- 💬 [WhatsApp](https://wa.me/5272062173388)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/David-Blasam/)
+
 
 ---
 
 **Hecho con ☕ por [DAVID BLAS]**
+
+**Derechos reservados ©️🎩 para [Santiago, Natalia, Obed, David]**
