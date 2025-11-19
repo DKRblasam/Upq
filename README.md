@@ -77,6 +77,7 @@ mysql -u root -p < Backend/src/config/base.sql
 - [Frontend README](./Frontend/README.md)
 - [Guía de Contribución](./CONTRIBUTING.md)
 - [Código de Conducta](./CODE_OF_CONDUCT.md)
+- [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/DKRblasam/Upq)
 
 ## 👥 Roles del Sistema
 
