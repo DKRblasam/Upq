@@ -1,0 +1,192 @@
+---
+import Layout from "@lyt/Layout.astro";
+import Header from "@cmt/header.astro";
+import Carrusel from "@cmt/carrusel.astro";
+import Hero from "@cmt/hero.astro";
+import Services from "@cmt/services.astro";
+import Gallery from "@cmt/galery.astro";
+import Foot from "@cmt/footer.astro";
+
+// 🔥 Aquí importas tu BD en TS
+import { careers } from '@/assets/content/carreras';
+
+// -----------------------------------------
+// 🔥 EXTRACCION AUTOMÁTICA DE MATERIAS
+// -----------------------------------------
+const subjects = Array.from(
+  new Set(
+    careers.flatMap((career) =>
+      career.cuatrimestres.flatMap((c) =>
+        c.materias.map((m) => m.name)
+      )
+    )
+  )
+);
+
+// -----------------------------------------
+// 🔥 TODAS LAS PUBLICACIONES (CONTENIDOS)
+// -----------------------------------------
+const publications = careers.flatMap((career) =>
+  career.cuatrimestres.flatMap((cuatri) =>
+    cuatri.materias.flatMap((materia) =>
+      materia.unidades.flatMap((unidad) =>
+        unidad.contenidos.map((contenido) => ({
+          ...contenido,
+          materia: materia.name,
+          unidad: unidad.name,
+        }))
+      )
+    )
+  )
+);
+---
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tablón Digital</title>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+
+
+
+<main class="px-5 md:px-8 py-10 max-w-6xl mx-auto">
+
+  <!-- Hero Section -->
+  <section class="text-center mb-16">
+    <h1 class="text-4xl md:text-5xl font-bold mb-5 text-gray-100">
+      Bienvenido al Tablón Digital
+    </h1>
+
+    <p class="text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+      Explora materiales, recursos y proyectos compartidos por nuestros profesores.
+      Aprende, descarga y colabora en un espacio abierto de conocimiento.
+    </p>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+      <div class="bg-[#28283f] rounded-xl p-6">
+        <i class="fas fa-book text-yellow-500 text-3xl mb-2"></i>
+        <span class="text-4xl font-bold text-yellow-500">{subjects.length}</span>
+        <span class="text-base text-gray-400">Materias</span>
+      </div>
+
+      <div class="bg-[#28283f] rounded-xl p-6">
+        <i class="fas fa-users text-blue-500 text-3xl mb-2"></i>
+        <span class="text-4xl font-bold text-blue-500">7</span>
+        <span class="text-base text-gray-400">Profesores</span>
+      </div>
+
+      <div class="bg-[#28283f] rounded-xl p-6">
+        <i class="fas fa-box text-purple-500 text-3xl mb-2"></i>
+        <span class="text-4xl font-bold text-purple-500">{publications.length}</span>
+        <span class="text-base text-gray-400">Recursos</span>
+      </div>
+
+      <div class="bg-[#28283f] rounded-xl p-6">
+        <i class="fas fa-percent text-green-600 text-3xl mb-2"></i>
+        <span class="text-4xl font-bold text-green-600">100%</span>
+        <span class="text-base text-gray-400">Gratis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subjects Section -->
+  <section class="mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-100">
+      Materias Disponibles
+    </h2>
+
+    <div class="flex flex-wrap gap-4">
+      <button class="subject-tag bg-yellow-500 text-[#1a1a2e] rounded-lg px-5 py-3 font-semibold">
+        <i class="fas fa-book-open mr-2"></i>
+        Todas las Materias
+      </button>
+
+      {
+        subjects.map((subject) => (
+          <button
+            class="subject-tag bg-[#28283f] text-gray-100 rounded-lg px-5 py-3 hover:bg-[#4a4a6b]"
+          >
+            {subject}
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section>
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-100">
+      Todas las Publicaciones
+    </h2>
+
+    {
+      publications.length === 0 ? (
+        <div class="bg-[#28283f] rounded-xl p-12 text-center flex flex-col items-center justify-center min-height-[300px] max-w-xl mx-auto">
+          <div class="bg-yellow-500 rounded-full p-5 mb-6">
+            <i class="fas fa-book text-[#1a1a2e] text-4xl"></i>
+          </div>
+          <p class="text-2xl font-semibold mb-2 text-gray-100">No hay publicaciones aún</p>
+          <p class="text-base text-gray-400">Los profesores pronto compartirán materiales y recursos</p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {
+            publications.map((pub) => (
+              <div class="bg-[#28283f] rounded-xl p-5">
+                <img src={pub.backgroundImage} class="rounded-md mb-4" />
+                <h3 class="text-lg font-bold text-gray-100 mb-2">{pub.title}</h3>
+                <p class="text-sm text-gray-400 mb-2">
+                  <strong>Materia:</strong> {pub.materia}<br />
+                  <strong>Unidad:</strong> {pub.unidad}
+                </p>
+                <a
+                  href={`https://www.youtube.com/watch?v=${pub.videoId}`}
+                  target="_blank"
+                  class="text-yellow-500 font-semibold"
+                >
+                  Ver video →
+                </a>
+              </div>
+            ))
+          }
+        </div>
+      )
+    }
+  </section>
+
+</main>
+
+<script>
+  // Filtros dinámicos de materias
+  const tags = document.querySelectorAll(".subject-tag");
+  const cards = document.querySelectorAll(".pub-card");
+
+  tags.forEach((tag) => {
+    tag.addEventListener("click", () => {
+      tags.forEach((t) =>
+        t.classList.remove("bg-yellow-500", "text-[#1a1a2e]", "font-semibold")
+      );
+
+      tag.classList.add("bg-yellow-500", "text-[#1a1a2e]", "font-semibold");
+
+      const filter = tag.innerText.trim();
+
+      cards.forEach((card) => {
+        card.style.display =
+          filter === "Todas las Materias" || card.dataset.subject === filter
+            ? "block"
+            : "none";
+      });
+    });
+  });
+</script>
+
+<Foot />
+</Layout>
