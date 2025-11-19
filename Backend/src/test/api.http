@@ -1,0 +1,108 @@
+###
+# 🔥 PING - Test básico de vida del servidor
+GET http://localhost:3306/api/ping
+
+###
+# 👤 Crear usuario (registro)
+POST http://localhost:3306/api/users
+Content-Type: application/json
+
+{
+  "nombre": "Juan Pérez",
+  "email": "juan@example.com",
+  "password": "123456"
+}
+
+###
+# 🔐 Login
+POST http://localhost:3306/api/users/login
+Content-Type: application/json
+
+{
+  "email": "juan@example.com",
+  "password": "123456"
+}
+
+###
+# Coloca aquí tu token una vez que hagas login
+@token = {{TOKEN_AQUI}}
+
+###
+# 🧍 Obtener perfil del usuario logueado
+GET http://localhost:3306/api/users/me
+Authorization: Bearer {{token}}
+
+###
+# 🧩 Ver todos los usuarios (requiere rol admin)
+GET http://localhost:3306/api/users
+Authorization: Bearer {{token}}
+
+###
+# 🎓 Crear una carrera
+POST http://localhost:3306/api/carreras
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "nombre": "Ingeniería en Sistemas Computacionales",
+  "descripcion": "Carrera enfocada en desarrollo, redes y arquitectura."
+}
+
+###
+# 🎓 Obtener todas las carreras
+GET http://localhost:3306/api/carreras
+Authorization: Bearer {{token}}
+
+###
+# 🎓 Obtener una carrera por ID
+GET http://localhost:3306/api/carreras/1
+Authorization: Bearer {{token}}
+
+###
+# 📝 Crear curso
+POST http://localhost:3306/api/cursos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "carreraId": 1,
+  "nombre": "Programación I",
+  "descripcion": "Fundamentos de programación",
+  "cuatrimestre": 1
+}
+
+###
+# 📝 Obtener todos los cursos
+GET http://localhost:3306/api/cursos
+Authorization: Bearer {{token}}
+
+###
+# 📝 Obtener todos los cursos de una carrera
+GET http://localhost:3306/api/cursos/carrera/1
+Authorization: Bearer {{token}}
+
+###
+# 🧑‍🏫 Asignar maestro al curso
+POST http://localhost:3306/api/cursos/1/asignar-maestro
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "maestroId": 1
+}
+
+###
+# 🔥 Crear unidad dentro de un curso
+POST http://localhost:3306/api/cursos/1/unidades
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "titulo": "Unidad 1: Introducción",
+  "descripcion": "Conceptos básicos y entorno de desarrollo."
+}
+
+###
+# 📚 Obtener unidades del curso
+GET http://localhost:3306/api/cursos/1/unidades
+Authorization: Bearer {{token}}
