@@ -1,4 +1,3 @@
-empecemos con el backend, la bd es:
 
 -- =========================================================
 -- TABLA: usuarios
