@@ -1,0 +1,466 @@
+---
+interface VideoContenido {
+  videoId: string;
+  title: string;
+  backgroundImage: string;
+}
+
+interface Materia {
+  name: string;
+  contenidos: VideoContenido[];
+}
+
+interface Cuatrimestre {
+  number: number;
+  materias: Materia[];
+}
+
+interface Carrera {
+  name: string;
+  cuatrimestres: Cuatrimestre[];
+}
+
+const careers: Carrera[] = [
+  {
+    name: "Ingeniería en Sistemas",
+    cuatrimestres: [
+      {
+        number: 1,
+        materias: [
+          {
+            name: "Fundamentos Matemáticos",
+            contenidos: [
+              {
+                videoId: "wCkerYMffMo",
+                title: "Fundamentos Matemáticos – Por qué 2+2 no siempre es 4",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/wCkerYMffMo/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Inglés I",
+            contenidos: [
+              {
+                videoId: "MBRqu0YOH14",
+                title: "Inglés I – Pronunciación sin llorar",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/MBRqu0YOH14/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Fundamentos de Programación",
+            contenidos: [
+              {
+                videoId: "Qqx_wzMmFeA",
+                title: "Tu primer programa que no explota (probablemente)",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/Qqx_wzMmFeA/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        number: 2,
+        materias: [
+          {
+            name: "Álgebra Lineal",
+            contenidos: [
+              {
+                videoId: "ZK3O402wf1c",
+                title: "Álgebra Lineal – Vectores que te miran feo",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/ZK3O402wf1c/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Inglés II",
+            contenidos: [
+              {
+                videoId: "tVlcKp3bWH8",
+                title: "Inglés II – Ahora sí toca hablar",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/tVlcKp3bWH8/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Programación Orientada a Objetos",
+            contenidos: [
+              {
+                videoId: "pTB0EiLXUC8",
+                title: "POO – ¿Qué es un objeto?",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/pTB0EiLXUC8/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        number: 3,
+        materias: [
+          {
+            name: "Cálculo Diferencial",
+            contenidos: [
+              {
+                videoId: "XojDHDHEr1k",
+                title: "Cálculo Diferencial – Derivadas sin morir",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/XojDHDHEr1k/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Inglés III",
+            contenidos: [
+              {
+                videoId: "S2hScWvUers",
+                title: "Inglés III – Hablando como NPC avanzado",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/S2hScWvUers/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Estructura de Datos",
+            contenidos: [
+              {
+                videoId: "RBSGKlAvoiM",
+                title: "Estructura de Datos – Listas que te traen recuerdos",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/RBSGKlAvoiM/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        number: 4,
+        materias: [
+          {
+            name: "Cálculo Integral",
+            contenidos: [
+              {
+                videoId: "HfACrKJ_Yb8",
+                title:
+                  "Cálculo Integral – Área bajo la curva y tus expectativas",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/HfACrKJ_Yb8/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Inglés IV",
+            contenidos: [
+              {
+                videoId: "j6kp0uY09LU",
+                title: "Inglés IV – Ya casi suenas profesional (casi)",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/j6kp0uY09LU/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Bases de Datos",
+            contenidos: [
+              {
+                videoId: "HXV3zeQKqGY",
+                title: "Bases de Datos – Donde guardas tus traumas",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/HXV3zeQKqGY/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        number: 5,
+        materias: [
+          {
+            name: "Probabilidad y Estadística",
+            contenidos: [
+              {
+                videoId: "xxpc-HPKN28",
+                title: "Probabilidad – La probabilidad de pasar: baja",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/xxpc-HPKN28/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Inglés V",
+            contenidos: [
+              {
+                videoId: "fA4cWIaGf8E",
+                title: "Inglés V – Ya eres bilingüe pero te da pena hablar",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/fA4cWIaGf8E/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Programación Web",
+            contenidos: [
+              {
+                videoId: "nu_pCVPKzTk",
+                title:
+                  "Programación Web – HTML no es un lenguaje (pero sí sirve)",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/nu_pCVPKzTk/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }, // -------- SEGUNDA CARRERA ---------
+  {
+    name: "Licenciatura en Administración",
+    cuatrimestres: [
+      {
+        number: 1,
+        materias: [
+          {
+            name: "Administración I",
+            contenidos: [
+              {
+                videoId: "djV11Xbc914",
+                title: "Adm I – Liderazgo nivel trabajador de Oxxo",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/djV11Xbc914/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Contabilidad Básica",
+            contenidos: [
+              {
+                videoId: "VY-r7p6KyBM",
+                title: "Contabilidad – Activo no es pasivo, créeme",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/VY-r7p6KyBM/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        number: 2,
+        materias: [
+          {
+            name: "Administración II",
+            contenidos: [
+              {
+                videoId: "mfkxv0vHn1k",
+                title: "Adm II – Manda correos como jefe",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/mfkxv0vHn1k/hqdefault.jpg",
+              },
+            ],
+          },
+          {
+            name: "Estadística",
+            contenidos: [
+              {
+                videoId: "omo8jB9L9NE",
+                title: "Estadística – Sí sirve, lo juro",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/omo8jB9L9NE/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        number: 3,
+        materias: [
+          {
+            name: "Comportamiento Organizacional",
+            contenidos: [
+              {
+                videoId: "asVqkA2Jx6o",
+                title: "CO – Por qué tu jefe es así",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/asVqkA2Jx6o/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        number: 4,
+        materias: [
+          {
+            name: "Mercadotecnia",
+            contenidos: [
+              {
+                videoId: "Rp6v6cW7sQY",
+                title: "Marketing – Manipulando emociones legalmente",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/Rp6v6cW7sQY/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+      {
+        number: 5,
+        materias: [
+          {
+            name: "Administración Financiera",
+            contenidos: [
+              {
+                videoId: "pRgP_uN3LT4",
+                title: "Adm Financiera – Por qué estás pobre",
+                backgroundImage:
+                  "https://i.ytimg.com/vi/pRgP_uN3LT4/hqdefault.jpg",
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+];
+
+/* Carrera seleccionada actualmente */
+const currentCareer = careers[0]; // Ingeniería en Sistemas
+const currentQuarter = currentCareer.cuatrimestres[0]; // Cuatri 1
+
+// componentes
+import Layout from "@lyt/Layout.astro";
+import LiteYouTube from "@/components/elements/LiteYouTube.astro";
+import SectionTitle from "@/components/elements/SectionTitle.astro";
+---
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+
+<main class="px-5 md:px-8 py-10 max-w-6xl mx-auto">
+  <!-- Subjects Section -->
+  <section class="mb-16">
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-100">
+      Materias Disponibles — {currentCareer.name} / Cuatrimestre {
+        currentQuarter.number
+      }
+    </h2>
+
+    <div class="flex flex-wrap gap-4">
+      <button
+        class="subject-tag bg-yellow-500 text-[#1a1a2e] rounded-lg px-5 py-3 cursor-pointer transition-colors flex items-center font-semibold"
+        data-materia="all"
+      >
+        <i class="fas fa-book-open mr-2"></i>
+        Todas las Materias
+      </button>
+
+      {
+        currentQuarter.materias.map((materia) => (
+          <button
+            class="subject-tag bg-[#28283f] text-gray-100 rounded-lg px-5 py-3 cursor-pointer hover:bg-[#4a4a6b] transition-colors flex items-center"
+            data-materia={materia.name}
+          >
+            {materia.name}
+          </button>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section>
+    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-100">
+      Todas las Publicaciones
+    </h2>
+
+    <div
+      class="bg-[#28283f] rounded-xl p-12 text-center flex flex-col items-center justify-center min-h-[300px] max-w-4xl mx-auto subject-content"
+      id="subject-content"
+    >
+      <!-- contenido dinámico aparecerá aquí -->
+      <div
+        class="bg-yellow-500 rounded-full p-5 mb-6 flex items-center justify-center"
+      >
+        <i class="fas fa-book text-[#1a1a2e] text-4xl"></i>
+      </div>
+      <p class="text-2xl font-semibold mb-2 text-gray-100">
+        No hay publicaciones aún
+      </p>
+      <p class="text-base text-gray-400">
+        Selecciona una materia para ver el contenido
+      </p>
+    </div>
+  </section>
+</main>
+
+<script type="module">
+  const materias = JSON.parse(
+    String.raw`<!--${JSON.stringify(currentQuarter.materias)}-->`
+  );
+
+  const contentBox = document.getElementById("subject-content");
+
+  const subjectTags = document.querySelectorAll(".subject-tag");
+  subjectTags.forEach((tag) => {
+    tag.addEventListener("click", () => {
+      // estilo seleccionado
+      subjectTags.forEach((t) => {
+        t.classList.remove("bg-yellow-500", "text-[#1a1a2e]", "font-semibold");
+        t.classList.add("bg-[#28283f]", "text-gray-100");
+      });
+
+      tag.classList.remove("bg-[#28283f]", "text-gray-100");
+      tag.classList.add("bg-yellow-500", "text-[#1a1a2e]", "font-semibold");
+
+      const materiaName = tag.dataset.materia;
+
+      if (materiaName === "all") {
+        contentBox.innerHTML = `
+          <div class="bg-yellow-500 rounded-full p-5 mb-6 flex items-center justify-center">
+            <i class="fas fa-book text-[#1a1a2e] text-4xl"></i>
+          </div>
+          <p class="text-2xl font-semibold mb-2 text-gray-100">Todas las Materias</p>
+          <p class="text-base text-gray-400">Selecciona una materia específica para ver su contenido</p>
+        `;
+        return;
+      }
+
+      const materia = materias.find((m) => m.name === materiaName);
+
+      if (!materia || materia.contenidos.length === 0) {
+        contentBox.innerHTML = `
+          <p class="text-2xl font-semibold mb-2 text-gray-100">Sin contenido</p>
+          <p class="text-base text-gray-400">El profesor aún no ha subido materiales</p>
+        `;
+        return;
+      }
+
+      const videosHTML = materia.contenidos
+        .map(
+          (v) => `
+        <section class="max-w-xl px-5 py-10 mx-auto">
+          <h3 class="pb-2 text-2xl font-semibold text-gray-100">${v.title}</h3>
+          <lite-youtube
+            videoid="${v.videoId}"
+            playlabel="${v.title}"
+            style="background-image:url('${v.backgroundImage}');"
+          ></lite-youtube>
+        </section>
+      `
+        )
+        .join("");
+
+      contentBox.innerHTML = videosHTML;
+    });
+  });
+</script>
