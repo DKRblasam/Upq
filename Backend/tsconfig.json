@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es2024",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./build",
+    "rootDir": "./src",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "@config/*": ["src/config/*"],
+      "@cont/*": ["src/controllers/*"],
+      "@midd/*": ["src/middlewares/*"],
+      "@mod/*": ["src/models/*"],
+      "@rut/*": ["src/routes/*"],
+      "@test/*": ["src/test/*"],
+      "@util/*": ["src/utils/*"]
+
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.test.ts"],
+  "exclude": ["node_modules"]
+}
