@@ -171,3 +171,9 @@ backend/src/generated/
 .parcel-cache/
 .next/
 out/
+
+
+# ===========================
+# Bases MD
+# ===========================
+d.md
