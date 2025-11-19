@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+
+
+import background from "@ast/back.avif";
+import '@sty/style__.css';
+
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <img id="background" class="object-cover" src={background.src} alt="" fetchpriority="high" />
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import "tailwindcss";
+</style>
+
