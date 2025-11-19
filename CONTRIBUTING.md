@@ -1,7 +1,5 @@
 
 ## 📄 `CONTRIBUTING.md`
-
-```markdown
 # 🤝 Guía de Contribución
 
 ¡Gracias por tu interés en contribuir! Este documento te guiará para que tu colaboración sea efectiva y sin fricción.
@@ -27,8 +25,8 @@ Este proyecto sigue el [Contributor Covenant](./CODE_OF_CONDUCT.md). Al particip
 ```bash
 # Haz fork desde GitHub
 # Clona tu fork
-git clone https://github.com/TU-USUARIO/nombre-repo.git
-cd nombre-repo
+git clone https://github.com/DKRblasam/Upq.git
+cd Upq
 
 # Agrega el repositorio original como upstream
 git remote add upstream https://github.com/ORIGINAL-OWNER/nombre-repo.git
@@ -255,9 +253,9 @@ Otras opciones que pensaste.
 
 ## 📞 Contacto
 
-- **Issues:** [GitHub Issues](../../issues)
+<!-- - **Issues:** [GitHub Issues](../../issues)
 - **Discussions:** [GitHub Discussions](../../discussions)
-- **Email:** [tu-email@ejemplo.com]
+- **Email:** [tu-email@ejemplo.com] -->
 
 ## 🙏 Agradecimientos
 
@@ -266,4 +264,3 @@ Tu tiempo y esfuerzo son valiosos. ¡Gracias por contribuir a hacer este proyect
 ---
 
 **Última actualización:** 2025
-```
