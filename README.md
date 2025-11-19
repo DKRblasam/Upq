@@ -1,5 +1,4 @@
 
-```markdown
 # 🎓 Sistema LMS Interno - Escuela
 
 Sistema de gestión de aprendizaje (LMS) interno para administración de carreras, cursos, maestros y contenido educativo.
@@ -127,4 +126,3 @@ Para dudas o sugerencias, abre un issue en GitHub.
 ---
 
 **Hecho con ☕ por [DAVID BLAS]**
-```
