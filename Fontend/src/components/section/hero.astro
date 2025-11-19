@@ -1,0 +1,152 @@
+---
+
+import Layout from '@lyt/Layout.astro';
+
+// src/pages/index.astro
+const subjects = [
+  "Comunicación y habilidades digitales",
+  "Desarrollo humano",
+  "Fisica",
+  "Fundamentos de Programación",
+  "Fundamentos de Redes",
+  "Fundamentos Matemáticos",
+  "Inglés"
+];
+---
+
+<head>
+
+  <title>UPQ - TIID - Tablón Digital</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+  
+<Layout title="UPQ - TIID - Tablón Digital">
+
+  <!-- Navbar -->
+  <header class="flex flex-col md:flex-row justify-between items-start md:items-center px-5 md:px-8 py-4 bg-[#0d0d1a] border-b border-[#2a2a4a]">
+    <div class="flex items-center mb-4 md:mb-0">
+      <div class="bg-yellow-500 rounded-lg p-3 mr-4 flex items-center justify-center">
+        <i class="fas fa-graduation-cap text-[#1a1a2e] text-2xl"></i>
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xl font-bold text-gray-100">UPQ - TIID</span>
+        <span class="text-[13px] text-gray-400 mt-0.5">Tecnologías de la Información e Innovación Digital</span>
+      </div>
+    </div>
+    <div class="flex items-center w-full md:w-auto justify-between md:justify-start gap-2 md:gap-3">
+      <button class="teacher-access-btn bg-yellow-500 text-[#1a1a2e] rounded-lg px-5 py-3 text-[15px] font-semibold cursor-pointer flex items-center justify-center hover:bg-yellow-600 transition-colors w-[48%] md:w-auto">
+        <i class="fas fa-arrow-right mr-2"></i>
+        Acceso Profesores
+      </button>
+      <button class="bg-green-600 text-white rounded-lg px-4 py-3 cursor-pointer flex items-center justify-center hover:bg-green-700 transition-colors w-[48%] md:w-auto">
+        <i class="fas fa-pencil-alt"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="px-5 md:px-8 py-10 max-w-6xl mx-auto">
+    
+    <!-- Hero Section -->
+    <section class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-5 text-gray-100">Bienvenido al Tablón Digital</h1>
+      <p class="text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+        Explora materiales, recursos y proyectos compartidos por nuestros profesores. Aprende,
+        descarga y colabora en un espacio abierto de conocimiento.
+      </p>
+      
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+        <div class="bg-[#28283f] rounded-xl p-6 flex flex-col items-start justify-center min-h-[120px]">
+          <i class="fas fa-book text-yellow-500 text-3xl mb-2"></i>
+          <span class="text-4xl font-bold text-yellow-500 mb-1">7</span>
+          <span class="text-base text-gray-400">Materias</span>
+        </div>
+        <div class="bg-[#28283f] rounded-xl p-6 flex flex-col items-start justify-center min-h-[120px]">
+          <i class="fas fa-users text-blue-500 text-3xl mb-2"></i>
+          <span class="text-4xl font-bold text-blue-500 mb-1">7</span>
+          <span class="text-base text-gray-400">Profesores</span>
+        </div>
+        <div class="bg-[#28283f] rounded-xl p-6 flex flex-col items-start justify-center min-h-[120px]">
+          <i class="fas fa-box text-purple-500 text-3xl mb-2"></i>
+          <span class="text-4xl font-bold text-purple-500 mb-1">0</span>
+          <span class="text-base text-gray-400">Recursos</span>
+        </div>
+        <div class="bg-[#28283f] rounded-xl p-6 flex flex-col items-start justify-center min-h-[120px]">
+          <i class="fas fa-percent text-green-600 text-3xl mb-2"></i>
+          <span class="text-4xl font-bold text-green-600 mb-1">100%</span>
+          <span class="text-base text-gray-400">Gratis</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subjects Section -->
+    <section class="mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-100">Materias Disponibles</h2>
+      <div class="flex flex-wrap gap-4">
+        <button class="subject-tag bg-yellow-500 text-[#1a1a2e] rounded-lg px-5 py-3 cursor-pointer transition-colors flex items-center font-semibold">
+          <i class="fas fa-book-open mr-2"></i>
+          Todas las Materias
+        </button>
+        {subjects.map(subject => (
+          <button class="subject-tag bg-[#28283f] text-gray-100 rounded-lg px-5 py-3 cursor-pointer hover:bg-[#4a4a6b] transition-colors flex items-center">
+            {subject}
+          </button>
+        ))}
+      </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section>
+      <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-100">Todas las Publicaciones</h2>
+      <div class="bg-[#28283f] rounded-xl p-12 text-center flex flex-col items-center justify-center min-h-[300px] max-w-xl mx-auto">
+        <div class="bg-yellow-500 rounded-full p-5 mb-6 flex items-center justify-center">
+          <i class="fas fa-book text-[#1a1a2e] text-4xl"></i>
+        </div>
+        <p class="text-2xl font-semibold mb-2 text-gray-100">No hay publicaciones aún</p>
+        <p class="text-base text-gray-400">Los profesores pronto compartirán materiales y recursos</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const accesoProfesoresBtn = document.querySelector('.teacher-access-btn');
+    if (accesoProfesoresBtn) {
+      accesoProfesoresBtn.addEventListener('click', () => {
+        window.location.href = '/profesores';
+      });
+    }
+
+    // Subject tag filtering
+    const subjectTags = document.querySelectorAll('.subject-tag');
+    subjectTags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        subjectTags.forEach(t => {
+          t.classList.remove('bg-yellow-500', 'text-[#1a1a2e]', 'font-semibold');
+          t.classList.add('bg-[#28283f]', 'text-gray-100');
+        });
+        tag.classList.remove('bg-[#28283f]', 'text-gray-100');
+        tag.classList.add('bg-yellow-500', 'text-[#1a1a2e]', 'font-semibold');
+      });
+    });
+  </script>
+
+  <style>
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #28283f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4a4a6b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6a6a8b;
+    }
+  </style>
+</Layout>
