@@ -1,0 +1,167 @@
+---
+/*
+  Datos reales estructurados:
+  Carrera → cuatrimestre → materias
+*/
+
+const career = {
+  name: "Ingeniería en Sistemas",
+  cuatrimestres: [
+    {
+      number: 1,
+      materias: [
+        "Comunicación y habilidades digitales",
+        "Desarrollo humano",
+        "Fisica",
+        "Fundamentos de Programación",
+        "Fundamentos de Redes",
+        "Fundamentos Matemáticos",
+        "Inglés",
+      ],
+    },
+  ],
+};
+
+// componentes
+import Layout from "@lyt/Layout.astro";
+import Header from "@cmt/header.astro";
+import Carrusel from "@cmt/carrusel.astro";
+import Hero from "@cmt/hero.astro";
+import Services from "@cmt/services.astro";
+import Gallery from "@cmt/galery.astro";
+import Foot from "@cmt/footer.astro";
+
+// componentes para publicaciones
+import LiteYouTube from "@/components/elements/LiteYouTube.astro";
+import SectionTitle from "@/components/elements/SectionTitle.astro";
+---
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tablón Digital</title>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+
+<Layout title="">
+
+	<!-- Main Content -->
+	<main class="px-5 md:px-8 py-10 max-w-6xl mx-auto">
+
+		<!-- Hero Section -->
+		<section class="text-center mb-16">
+			<h1 class="text-4xl md:text-5xl font-bold mb-5 text-gray-100">
+				Bienvenido al Tablón Digital
+			</h1>
+
+			<p
+				class="text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed"
+			>
+				Explora materiales, recursos y proyectos compartidos por nuestros
+				profesores. Aprende, descarga y colabora en un espacio abierto de
+				conocimiento.
+			</p>
+
+			<!-- Stats Grid -->
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+				<div class="bg-[#28283f] rounded-xl p-6 flex flex-col items-start justify-center min-h-[120px]">
+					<i class="fas fa-book text-yellow-500 text-3xl mb-2"></i>
+					<span class="text-4xl font-bold text-yellow-500 mb-1">
+						{career.cuatrimestres[0].materias.length}
+					</span>
+					<span class="text-base text-gray-400">Materias</span>
+				</div>
+
+				<div class="bg-[#28283f] rounded-xl p-6 flex flex-col items-start justify-center min-h-[120px]">
+					<i class="fas fa-users text-blue-500 text-3xl mb-2"></i>
+					<span class="text-4xl font-bold text-blue-500 mb-1">7</span>
+					<span class="text-base text-gray-400">Profesores</span>
+				</div>
+
+				<div class="bg-[#28283f] rounded-xl p-6 flex flex-col items-start justify-center min-h-[120px]">
+					<i class="fas fa-box text-purple-500 text-3xl mb-2"></i>
+					<span class="text-4xl font-bold text-purple-500 mb-1">0</span>
+					<span class="text-base text-gray-400">Recursos</span>
+				</div>
+
+				<div class="bg-[#28283f] rounded-xl p-6 flex flex-col items-start justify-center min-h-[120px]">
+					<i class="fas fa-percent text-green-600 text-3xl mb-2"></i>
+					<span class="text-4xl font-bold text-green-600 mb-1">100%</span>
+					<span class="text-base text-gray-400">Gratis</span>
+				</div>
+			</div>
+		</section>
+
+
+		<!-- Subjects Section (DINÁMICO POR CARRERA Y CUATRIMESTRE) -->
+		<section class="mb-16">
+			<h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-100">
+				Materias Disponibles — {career.name} / Cuatrimestre {career.cuatrimestres[0].number}
+			</h2>
+
+			<div class="flex flex-wrap gap-4">
+				<button
+					class="subject-tag bg-yellow-500 text-[#1a1a2e] rounded-lg px-5 py-3 cursor-pointer transition-colors flex items-center font-semibold"
+				>
+					<i class="fas fa-book-open mr-2"></i>
+					Todas las Materias
+				</button>
+
+				{
+					career.cuatrimestres[0].materias.map((materia) => (
+						<button class="subject-tag bg-[#28283f] text-gray-100 rounded-lg px-5 py-3 cursor-pointer hover:bg-[#4a4a6b] transition-colors flex items-center">
+							{materia}
+						</button>
+					))
+				}
+			</div>
+		</section>
+
+
+		<!-- Publications Section -->
+		<section class="mt-24 max-w-xl mx-auto px-5">
+			<SectionTitle class="pb-8" title="Todas las Publicaciones" />
+
+			<!-- EJEMPLO DE VIDEO (LO PUEDES CAMBIAR O ITERAR EN LISTA) -->
+			<LiteYouTube
+				videoId="dQw4w9WgXcQ"
+				title="Ejemplo de Video Subido por Profesor"
+				backgroundImage="https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+				withShadowImage={true}
+			/>
+		</section>
+
+	</main>
+
+
+	<script>
+		// Botón login profesores
+		const accesoProfesoresBtn = document.querySelector(".teacher-access-btn");
+		if (accesoProfesoresBtn) {
+			accesoProfesoresBtn.addEventListener("click", () => {
+				window.location.href = "/profesores";
+			});
+		}
+
+		// Subject tag filtering (igual que tenías)
+		const subjectTags = document.querySelectorAll(".subject-tag");
+		subjectTags.forEach((tag) => {
+			tag.addEventListener("click", () => {
+				subjectTags.forEach((t) => {
+					t.classList.remove("bg-yellow-500", "text-[#1a1a2e]", "font-semibold");
+					t.classList.add("bg-[#28283f]", "text-gray-100");
+				});
+				tag.classList.remove("bg-[#28283f]", "text-gray-100");
+				tag.classList.add("bg-yellow-500", "text-[#1a1a2e]", "font-semibold");
+			});
+		});
+	</script>
+
+	<Foot />
+
+</Layout>
