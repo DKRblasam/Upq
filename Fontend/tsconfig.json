@@ -1,0 +1,26 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "baseUrl": "./",
+
+    
+
+    "paths": {
+      "@db/*": ["./config/Database/*"],
+      "@/*": ["./src/*"],
+      "@cmp/*": ["./src/components/*"],
+      "@itm/*": ["./src/components/elements/*"],
+      "@lyt/*": ["./src/layouts/*"],
+      "@pgs/*": ["./src/pages/*"],
+      "@uts/*": ["./src/utils/*"],
+      "@sty/*": ["./src/styles/*"],
+      "@ast/*": ["./src/assets/*"],
+      "@cmt/*": ["./src/components/section/*"],
+      "@scrt/*": ["./src/scripts/*"]
+    },
+    "jsx": "preserve",
+    "jsxImportSource": "astro"
+  }
+}

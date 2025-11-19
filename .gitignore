@@ -16,6 +16,9 @@ package-lock.json
 .env.production.local
 .env.*.local
 .copy/
+Backend - copia/
+config/
+
 
 # ===========================
 # Build & Dist Output
