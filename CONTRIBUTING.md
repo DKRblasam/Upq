@@ -261,6 +261,9 @@ Otras opciones que pensaste.
 
 Tu tiempo y esfuerzo son valiosos. ¡Gracias por contribuir a hacer este proyecto mejor!
 
+## PD
+**Toda la documentacion referente a este repositorio la esncuentras en:** 
+[**Docs 📜**](https://deepwiki.com/DKRblasam/Upq)
 ---
 
 **Última actualización:** 2025
