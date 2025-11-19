@@ -1,7 +1,6 @@
 
 ## 📄 `CODE_OF_CONDUCT.md`
 
-```markdown
 # Código de Conducta
 
 ## Nuestro Compromiso
@@ -46,4 +45,3 @@ Este Código de Conducta es una adaptación del [Contributor Covenant](https://w
 
 **Versión:** 2.1  
 **Última actualización:** 2025
-```
