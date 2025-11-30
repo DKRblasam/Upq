@@ -1,13 +1,15 @@
 ---
 interface Props {
   title: string;
+  descripcion: string;
 }
 
-const { title } = Astro.props;
+const { title, descripcion = "..." } = Astro.props;
 
 
 import background from "@ast/back.avif";
-import '@sty/style__.css';
+import '@sty/styles___.css';
+
 
 ---
 
@@ -28,5 +30,6 @@ import '@sty/style__.css';
 
 <style is:global>
   @import "tailwindcss";
+  
 </style>
 

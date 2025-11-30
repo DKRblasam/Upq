@@ -1,10 +1,10 @@
 ###
 # 🔥 PING - Test básico de vida del servidor
-GET http://localhost:3306/api/ping
+GET http://localhost:4000/api/ping
 
 ###
 # 👤 Crear usuario (registro)
-POST http://localhost:3306/api/users
+POST http://localhost:4000/api/users
 Content-Type: application/json
 
 {
@@ -15,31 +15,31 @@ Content-Type: application/json
 
 ###
 # 🔐 Login
-POST http://localhost:3306/api/users/login
+POST http://localhost:4000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "juan@example.com",
+  "email": "juqo1",
   "password": "123456"
 }
 
 ###
 # Coloca aquí tu token una vez que hagas login
-@token = {{TOKEN_AQUI}}
+@token = CFPUsTP4p6y6P1sQnmATna8AdcxiVyLR1UJVhN8G93J4+AEAo4vK8S99/8gp0znRHEQUL0tGk77HJWaxhnYKyA==
+
 
 ###
 # 🧍 Obtener perfil del usuario logueado
-GET http://localhost:3306/api/users/me
-Authorization: Bearer {{token}}
+GET http://localhost:4000/api/users/me
 
 ###
 # 🧩 Ver todos los usuarios (requiere rol admin)
-GET http://localhost:3306/api/users
+GET http://localhost:4000/api/users
 Authorization: Bearer {{token}}
 
 ###
 # 🎓 Crear una carrera
-POST http://localhost:3306/api/carreras
+POST http://localhost:4000/api/carreras
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -50,17 +50,17 @@ Content-Type: application/json
 
 ###
 # 🎓 Obtener todas las carreras
-GET http://localhost:3306/api/carreras
+GET http://localhost:4000/api/carreras
 Authorization: Bearer {{token}}
 
 ###
 # 🎓 Obtener una carrera por ID
-GET http://localhost:3306/api/carreras/1
+GET http://localhost:4000/api/carreras/1
 Authorization: Bearer {{token}}
 
 ###
 # 📝 Crear curso
-POST http://localhost:3306/api/cursos
+POST http://localhost:4000/api/cursos
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -73,17 +73,17 @@ Content-Type: application/json
 
 ###
 # 📝 Obtener todos los cursos
-GET http://localhost:3306/api/cursos
+GET http://localhost:4000/api/cursos
 Authorization: Bearer {{token}}
 
 ###
 # 📝 Obtener todos los cursos de una carrera
-GET http://localhost:3306/api/cursos/carrera/1
+GET http://localhost:4000/api/cursos/carrera/1
 Authorization: Bearer {{token}}
 
 ###
 # 🧑‍🏫 Asignar maestro al curso
-POST http://localhost:3306/api/cursos/1/asignar-maestro
+POST http://localhost:4000/api/cursos/1/asignar-maestro
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -93,7 +93,7 @@ Content-Type: application/json
 
 ###
 # 🔥 Crear unidad dentro de un curso
-POST http://localhost:3306/api/cursos/1/unidades
+POST http://localhost:4000/api/cursos/1/unidades
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -104,5 +104,5 @@ Content-Type: application/json
 
 ###
 # 📚 Obtener unidades del curso
-GET http://localhost:3306/api/cursos/1/unidades
+GET http://localhost:4000/api/cursos/1/unidades
 Authorization: Bearer {{token}}

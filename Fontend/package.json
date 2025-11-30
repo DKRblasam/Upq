@@ -1,5 +1,5 @@
 {
-  "name": "Frontend",
+  "name": "llms_frontend",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -9,8 +9,19 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@lucide/astro": "^0.555.0",
+    "@midudev/tailwind-animations": "^0.2.0",
     "@tailwindcss/vite": "^4.1.17",
     "astro": "^5.15.5",
     "tailwindcss": "^4.1.17"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.48.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-astro": "^1.5.0",
+    "prettier": "^3.7.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "sharp": "^0.34.5"
   }
 }

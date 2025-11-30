@@ -5,6 +5,7 @@ export interface Usuario {
   nombre: string;
   usuario: string;
   passw: string;
+  matricula: string;
   rol: RolUsuario;
   activo: number;
   created_at: string;   // ISO Timestamp

@@ -3,7 +3,7 @@ import "dotenv/config";
 import app from "./app";
 import { db } from "@/config/db";
 
-const PORT = process.env.DB_PORT || 4000;
+const PORT = process.env.DB_PORTl || 4000;
 
 (async () => {
   try {

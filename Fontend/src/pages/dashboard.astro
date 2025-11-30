@@ -1,0 +1,192 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import Header from "@/components/section/header.astro";
+
+---
+
+<script>
+  const token = localStorage.getItem("token");
+  const userStr = localStorage.getItem("user");
+
+  if (!token || !userStr) {
+    window.location.href = "/login";
+  } else {
+    const user = JSON.parse(userStr);
+
+    if (user.rol === "user") {
+      alert("No tienes acceso al dashboard.");
+      window.location.href = "/";
+    } else {
+      loadDashboard(token, user);
+    }
+  }
+
+  async function loadDashboard(token, user) {
+    try {
+      const response = await fetch("http://localhost:4000/api/dashboard/data", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al cargar datos");
+      }
+
+      const data = await response.json();
+      renderDashboard(user, data);
+      console.log(data);
+      
+
+      document.getElementById("loading").classList.add("hidden");
+      document.getElementById("dashboard-content").classList.remove("hidden");
+    } catch (error) {
+      console.error(error);
+      alert("Sesión expirada o error de conexión.");
+      console.log("Sesión expirada o error de conexión.");
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.href = "/login";
+    }
+  }
+
+  function renderDashboard(user, data) {
+    const welcomeMsg = document.getElementById("welcome-msg");
+    const roleMsg = document.getElementById("role-msg");
+    const viewContainer = document.getElementById("view-container");
+
+    welcomeMsg.textContent = `Bienvenido, ${user.nombre}`;
+    roleMsg.textContent = `Rol: ${user.rol.toUpperCase()}`;
+
+    let html = "";
+
+    if (user.rol === "Superadm") {
+      
+      html = `
+      
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="bg-white p-4 rounded shadow border-l-4 border-blue-500">
+            <h3 class="font-bold text-gray-500">Carreras</h3>
+            <p class="text-2xl font-bold text-gray-600">${data.carreras?.length || 0}</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow border-l-4 border-green-500">
+            <h3 class="font-bold text-gray-500">Cursos</h3>
+            <p class="text-2xl font-bold text-gray-600">${data.cursos?.length || 0}</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow border-l-4 border-yellow-500">
+            <h3 class="font-bold text-gray-500">Unidades</h3>
+            <p class="text-2xl font-bold text-gray-600">${data.unidades?.length || 0}</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow border-l-4 border-purple-500">
+            <h3 class="font-bold text-gray-500">Usuarios</h3>
+            <p class="text-2xl font-bold text-gray-600">${data.usuarios?.length || 0}</p>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded shadow p-6">
+          <h3 class="text-xl font-bold mb-4 text-gray-600">Panel de Control Total</h3>
+          <p class="text-gray-600">Tienes acceso completo para gestionar el sistema.</p>
+          <!-- Aquí irían las tablas CRUD -->
+        </div>
+
+        <SuperAdminView data=${data} />
+
+      `;
+    } else if (user.rol === "adm") {
+      html = `
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div class="bg-white p-4 rounded shadow border-l-4 border-green-500">
+            <h3 class="font-bold text-gray-500">Cursos</h3>
+            <p class="text-2xl font-bold">${data.cursos?.length || 0}</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow border-l-4 border-yellow-500">
+            <h3 class="font-bold text-gray-500">Unidades</h3>
+            <p class="text-2xl font-bold">${data.unidades?.length || 0}</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow border-l-4 border-purple-500">
+            <h3 class="font-bold text-gray-500">Maestros</h3>
+            <p class="text-2xl font-bold">${data.maestros?.length || 0}</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded shadow p-6">
+          <h3 class="text-xl font-bold mb-4">Gestión de Carrera</h3>
+          <p class="text-gray-600">Gestiona los recursos de tu carrera asignada.</p>
+        </div>
+      `;
+    } else if (user.rol === "teach") {
+      html = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div class="bg-white p-4 rounded shadow border-l-4 border-green-500">
+            <h3 class="font-bold text-gray-500">Cursos Asignados</h3>
+            <p class="text-2xl font-bold">${data.cursos?.length || 0}</p>
+          </div>
+          <div class="bg-white p-4 rounded shadow border-l-4 border-yellow-500">
+            <h3 class="font-bold text-gray-500">Mis Unidades</h3>
+            <p class="text-2xl font-bold">${data.unidades?.length || 0}</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded shadow p-6">
+          <h3 class="text-xl font-bold mb-4">Mis Unidades</h3>
+          <ul class="divide-y divide-gray-200">
+            ${
+              data.unidades
+                ?.map(
+                  (u: any) => `
+              <li class="py-3 flex justify-between items-center">
+                <span>${u.titulo}</span>
+                <button class="text-blue-600 hover:text-blue-800 font-medium">Editar Contenido</button>
+              </li>
+            `
+                )
+                .join("") ||
+              '<p class="text-gray-500">No tienes unidades asignadas.</p>'
+            }
+          </ul>
+        </div>
+      `;
+    }
+
+    viewContainer.innerHTML = html;
+  }
+</script>
+
+<Layout title="Dashboard" descripcion="Dashboard">
+  <Header showbtnlogin={false} />
+  <main class="min-h-screen p-4">
+    <div id="loading" class="flex justify-center items-center h-64">
+      <p class="text-xl text-gray-500">Cargando dashboard...</p>
+    </div>
+
+    <div id="dashboard-content" class="hidden max-w-7xl mx-auto">
+      <!-- Header del Dashboard -->
+      <div class="bg-white shadow rounded-lg p-6 mb-6">
+        <h1 id="welcome-msg" class="text-3xl font-bold text-gray-900">
+          Bienvenido
+        </h1>
+        <p id="role-msg" class="text-gray-600 mt-2"></p>
+      </div>
+      {
+        user.rol === "Superadm" && (
+          <SuperAdminView data=${data} />
+        )
+      }
+
+      <!-- Contenedor de Vistas -->
+      <div id="view-container">
+        
+        <div class="bg-white rounded shadow p-6">
+          <h3 class="text-xl font-bold mb-4">Panel de Control Total</h3>
+          <p class="text-gray-600">
+            Tienes acceso completo para gestionar el sistema.
+          </p>
+          <!-- Aquí irían las tablas CRUD -->
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+

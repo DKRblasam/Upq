@@ -1,0 +1,181 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Registro">
+  <main
+    class="flex min-h-screen items-center justify-center bg-[#fbfbfb5d] px-4 py-12 sm:px-6 lg:px-8"
+  >
+    <div class="w-full max-w-md space-y-8 bg-white p-10 shadow-xl rounded-xl">
+      <div>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          Crear Cuenta
+        </h2>
+        <p class="mt-2 text-center text-sm text-gray-600">
+          Regístrate para acceder al sistema
+        </p>
+      </div>
+      <form class="mt-8 space-y-6" id="registerForm">
+        <div class="space-y-4 rounded-md shadow-sm">
+          <div>
+            <label for="matricula" class="sr-only">Matricula</label>
+            <input
+              id="matricula"
+              name="matricula"
+              type="text"
+              required
+              class="relative block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Matricula"
+            />
+          </div>
+        </div>
+        <div class="space-y-4 rounded-md shadow-sm">
+          <div>
+            <label for="nombre" class="sr-only">Nombre Completo</label>
+            <input
+              id="nombre"
+              name="nombre"
+              type="text"
+              required
+              class="relative block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Nombre Completo"
+            />
+          </div>
+          <div>
+            <label for="usuario" class="sr-only">Usuario</label>
+            <input
+              id="usuario"
+              name="usuario"
+              type="text"
+              required
+              class="relative block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Usuario"
+            />
+          </div>
+          <div>
+            <label for="passw" class="sr-only">Contraseña</label>
+            <input
+              id="passw"
+              name="passw"
+              type="password"
+              required
+              class="relative block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Contraseña"
+            />
+          </div>
+
+          <div>
+            <label for="code" class="sr-only"
+              >Código de Registro (Opcional)</label
+            >
+            <input
+              id="code"
+              name="code"
+              type="text"
+              class="relative block w-full rounded-md border-0 py-2 px-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="Código de Registro (Opcional)"
+            />
+          </div>
+        </div>
+
+        <div id="errorMessage" class="hidden text-sm text-red-600 text-center">
+        </div>
+        <div
+          id="successMessage"
+          class="hidden text-sm text-green-600 text-center"
+        >
+        </div>
+
+        <div>
+          <input type="checkbox" id="terms" name="terms" required />
+          <label for="terms" class="text-amber-950"
+            >Acepto los términos y condiciones</label
+          >
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            class="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 transition-colors duration-200"
+          >
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+              <svg
+                class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </span>
+            Registrarse
+          </button>
+        </div>
+        <div class="text-center text-sm">
+          <a
+            href="/login"
+            class="font-medium text-indigo-600 hover:text-indigo-500"
+          >
+            ¿Ya tienes cuenta? Inicia sesión
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const form = document.getElementById("registerForm") as HTMLFormElement;
+  const errorMessage = document.getElementById("errorMessage");
+  const successMessage = document.getElementById("successMessage");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (errorMessage) errorMessage.classList.add("hidden");
+    if (successMessage) successMessage.classList.add("hidden");
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    // Remove code if empty to avoid sending empty string
+    if (!data.code) {
+      delete data.code;
+    }
+
+    try {
+      const response = await fetch("http://localhost:4000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        if (successMessage) {
+          successMessage.textContent = "Registro exitoso. Redirigiendo...";
+          successMessage.classList.remove("hidden");
+        }
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 2000);
+      } else {
+        if (errorMessage) {
+          errorMessage.textContent = result.error || "Error al registrarse";
+          errorMessage.classList.remove("hidden");
+        }
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      if (errorMessage) {
+        errorMessage.textContent = "Error de conexión con el servidor";
+        errorMessage.classList.remove("hidden");
+      }
+    }
+  });
+</script>

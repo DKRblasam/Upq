@@ -8,7 +8,12 @@ import Gallery from "@cmt/galery.astro";
 import Foot from "@cmt/footer.astro";
 
 // 🔥 Aquí importas tu BD en TS
-import { careers } from '@/assets/content/carreras';
+import { careers } from "@/assets/content/carreras";
+
+//   Componentes para el video
+
+import LiteYouTube from "@itm/LiteYouTube.astro";
+import SectionTitle from "@itm/SectionTitle.astro";
 
 // -----------------------------------------
 // 🔥 EXTRACCION AUTOMÁTICA DE MATERIAS
@@ -16,9 +21,7 @@ import { careers } from '@/assets/content/carreras';
 const subjects = Array.from(
   new Set(
     careers.flatMap((career) =>
-      career.cuatrimestres.flatMap((c) =>
-        c.materias.map((m) => m.name)
-      )
+      career.cuatrimestres.flatMap((c) => c.materias.map((m) => m.name))
     )
   )
 );
@@ -54,25 +57,33 @@ const publications = careers.flatMap((career) =>
 />
 
 
-
 <main class="px-5 md:px-8 py-10 max-w-6xl mx-auto">
-
   <!-- Hero Section -->
   <section class="text-center mb-16">
-    <h1 class="text-4xl md:text-5xl font-bold mb-5 text-gray-100">
+    <h1 class="text-4xl md:text-5xl font-bold mb-5 text-gray-300">
       Bienvenido al Tablón Digital
     </h1>
+    <div class="flex flex-row gap-5 w-full justify-center items-center">
+      <span class="text-xl font-bold text-gray-400">UPQ - TIID:</span>
+      <span class="text-xl text-gray-400 mt-0.5">
+        Tecnologías de la Información e Innovación Digital
+      </span>
+    </div>
 
-    <p class="text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
-      Explora materiales, recursos y proyectos compartidos por nuestros profesores.
-      Aprende, descarga y colabora en un espacio abierto de conocimiento.
+    <p
+      class="text-base md:text-lg text-gray-500 max-w-3xl mx-auto mb-10 leading-relaxed"
+    >
+      Explora materiales, recursos y proyectos compartidos por nuestros
+      profesores. Aprende, descarga y colabora en un espacio abierto de
+      conocimiento.
     </p>
 
     <!-- Stats Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
       <div class="bg-[#28283f] rounded-xl p-6">
         <i class="fas fa-book text-yellow-500 text-3xl mb-2"></i>
-        <span class="text-4xl font-bold text-yellow-500">{subjects.length}</span>
+        <span class="text-4xl font-bold text-yellow-500">{subjects.length}</span
+        >
         <span class="text-base text-gray-400">Materias</span>
       </div>
 
@@ -84,7 +95,9 @@ const publications = careers.flatMap((career) =>
 
       <div class="bg-[#28283f] rounded-xl p-6">
         <i class="fas fa-box text-purple-500 text-3xl mb-2"></i>
-        <span class="text-4xl font-bold text-purple-500">{publications.length}</span>
+        <span class="text-4xl font-bold text-purple-500"
+          >{publications.length}</span
+        >
         <span class="text-base text-gray-400">Recursos</span>
       </div>
 
@@ -103,16 +116,16 @@ const publications = careers.flatMap((career) =>
     </h2>
 
     <div class="flex flex-wrap gap-4">
-      <button class="subject-tag bg-yellow-500 text-[#1a1a2e] rounded-lg px-5 py-3 font-semibold">
+      <button
+        class="subject-tag bg-yellow-500 text-[#1a1a2e] rounded-lg px-5 py-3 font-semibold"
+      >
         <i class="fas fa-book-open mr-2"></i>
         Todas las Materias
       </button>
 
       {
         subjects.map((subject) => (
-          <button
-            class="subject-tag bg-[#28283f] text-gray-100 rounded-lg px-5 py-3 hover:bg-[#4a4a6b]"
-          >
+          <button class="subject-tag bg-[#28283f] text-gray-100 rounded-lg px-5 py-3 hover:bg-[#4a4a6b]">
             {subject}
           </button>
         ))
@@ -130,37 +143,44 @@ const publications = careers.flatMap((career) =>
       publications.length === 0 ? (
         <div class="bg-[#28283f] rounded-xl p-12 text-center flex flex-col items-center justify-center min-height-[300px] max-w-xl mx-auto">
           <div class="bg-yellow-500 rounded-full p-5 mb-6">
-            <i class="fas fa-book text-[#1a1a2e] text-4xl"></i>
+            <i class="fas fa-book text-[#1a1a2e] text-4xl" />
           </div>
-          <p class="text-2xl font-semibold mb-2 text-gray-100">No hay publicaciones aún</p>
-          <p class="text-base text-gray-400">Los profesores pronto compartirán materiales y recursos</p>
+          <p class="text-2xl font-semibold mb-2 text-gray-100">
+            No hay publicaciones aún
+          </p>
+          <p class="text-base text-gray-400">
+            Los profesores pronto compartirán materiales y recursos
+          </p>
         </div>
       ) : (
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {
-            publications.map((pub) => (
-              <div class="bg-[#28283f] rounded-xl p-5">
-                <img src={pub.backgroundImage} class="rounded-md mb-4" />
-                <h3 class="text-lg font-bold text-gray-100 mb-2">{pub.title}</h3>
-                <p class="text-sm text-gray-400 mb-2">
-                  <strong>Materia:</strong> {pub.materia}<br />
-                  <strong>Unidad:</strong> {pub.unidad}
-                </p>
-                <a
-                  href={`https://www.youtube.com/watch?v=${pub.videoId}`}
-                  target="_blank"
-                  class="text-yellow-500 font-semibold"
-                >
-                  Ver video →
-                </a>
-              </div>
-            ))
-          }
+          {publications.map((pub) => (
+            <div class="bg-[#28283f] rounded-xl p-5">
+              <LiteYouTube 
+              videoId={pub.videoId}
+              title={pub.title}
+              backgroundImage={pub.backgroundImage}
+              withShadowImage={true}
+              />
+              <h3 class="text-lg font-bold text-gray-100 mb-2">{pub.title}</h3>
+              <p class="text-sm text-gray-400 mb-2">
+                <strong>Materia:</strong> {pub.materia}
+                <br />
+                <strong>Unidad:</strong> {pub.unidad}
+              </p>
+              <a
+                href={`https://www.youtube.com/watch?v=${pub.videoId}`}
+                target="_blank"
+                class="text-yellow-500 font-semibold"
+              >
+                Ver video →
+              </a>
+            </div>
+          ))}
         </div>
       )
     }
   </section>
-
 </main>
 
 <script>
@@ -189,4 +209,3 @@ const publications = careers.flatMap((career) =>
 </script>
 
 <Foot />
-</Layout>

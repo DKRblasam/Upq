@@ -1,44 +1,179 @@
 ---
-const { isnessery } = Astro.props;
-
-if (!isnessery) {
-  
+interface Props {
+  showbtnlogin?: boolean;
+  isNessery: boolean;
 }
 
+const { showbtnlogin, isNessery } = Astro.props;
+
+// Render condicional válido en Astro (NO JSX)
+let loginButtons;
+
+if (showbtnlogin) {
+  loginButtons = (
+    `<
+      id="customer"
+      class="flex items-center w-full md:w-auto justify-between md:justify-start gap-2 md:gap-3"
+    >
+      <a href="/dashboard">
+        <button class="teacher-access-btn bg-red-500 text-[#1a1a2e] rounded-lg px-5 py-3 text-[15px] font-semibold cursor-pointer flex items-center justify-center hover:bg-yellow-600 transition-colors w-[48%] md:w-auto">
+          <i class="fas fa-arrow-right mr-2"></i>
+          Acceso Profesores
+        </button>
+      </a>
+
+      <button class="bg-blue-600 text-white rounded-lg px-4 py-3 cursor-pointer flex items-center justify-center hover:bg-green-700 transition-colors w-[48%] md:w-auto">
+        <i class="fas fa-pencil-alt"></i>
+      </button>
+    </div>`
+  );
+} else {
+  
+  loginButtons = (`<div class="w-[48%]">hola</div>`);
+
+}
 ---
 
 <header
   class="flex flex-col md:flex-row justify-between items-start md:items-center px-5 md:px-8 py-4 bg-[#0d0d1a] gap-4"
 >
-  <div class="flex items-center mb-4 md:mb-0 bg-blue-600">
-    <div
-      class="bg-yellow-500 rounded-lg p-3 mr-4 flex items-center justify-center"
-    >
-      <i class="fas fa-graduation-cap text-[#1a1a2e] text-2xl"></i>
-    </div>
-    <div class="flex flex-col">
-      <span class="text-xl font-bold text-gray-100">UPQ - TIID</span>
-      <span class="text-[13px] text-gray-400 mt-0.5"
-        >Tecnologías de la Información e Innovación Digital</span
+  <div class="flex items-center mb-4 md:mb-0">
+    <div class="flex items-center mb-6">
+      <div
+        class="w-15 h-12 rounded-lg flex items-center justify-center mr-2 shadow-lg shadow-blue-500/80"
       >
+        <span class="text-white font-bold text-xl">Study</span>
+      </div>
+      <div
+        class="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mr-4 shadow-lg shadow-blue-500/20"
+      >
+        <span class="text-black font-bold text-xl">hub</span>
+      </div>
+      <div>
+        <h3 class="text-2xl font-bold text-white mb-1">Tablón Digital</h3>
+        <p class="text-xs text-yellow-500 font-semibold tracking-wider uppercase">
+          Universidad Politécnica
+        </p>
+      </div>
     </div>
   </div>
-  
 
-  <div
-    id="customer"
-    class="flex items-center w-full md:w-auto justify-between md:justify-start gap-2 md:gap-3"
-  >
-    <button
-      class="teacher-access-btn bg-red-500 text-[#1a1a2e] rounded-lg px-5 py-3 text-[15px] font-semibold cursor-pointer flex items-center justify-center hover:bg-yellow-600 transition-colors w-[48%] md:w-auto"
-    >
-      <i class="fas fa-arrow-right mr-2"></i>
-      Acceso Profesores
-    </button>
-    <button
-      class="bg-blue-600 text-white rounded-lg px-4 py-3 cursor-pointer flex items-center justify-center hover:bg-green-700 transition-colors w-[48%] md:w-auto"
-    >
-      <i class="fas fa-pencil-alt"></i>
-    </button>
+  <div class="elements-nav-msd w-full md:w-auto">
+    <nav id="dynamic-menu" class="bg-gray-800 text-white px-8 py-2 hidden">
+      <ul class="flex space-x-6" id="menu-list">
+        <li><a href="/" class="hover:text-yellow-500">Inicio</a></li>
+      </ul>
+    </nav>
   </div>
+
+  {loginButtons}
 </header>
+
+<script>
+  const token = localStorage.getItem("token");
+  const userStr = localStorage.getItem("user");
+  const customerDiv = document.getElementById("customer");
+  const menuNav = document.getElementById("dynamic-menu");
+  const menuList = document.getElementById("menu-list");
+
+  if (userStr) {
+    const user = JSON.parse(userStr);
+    console.log(user);
+    console.log(user.rol);
+    console.log(token);
+
+    menuNav?.classList.remove("hidden");
+
+    if (user.rol === "user") {
+      if (customerDiv) customerDiv.style.display = "none";
+    }
+
+    fetchHierarchy(token);
+  }
+
+  async function fetchHierarchy(token: string | any) {
+    try {
+      const response = await fetch("http://localhost:4000/api/menu/hierarchy", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.headers);
+
+      if (response.ok) {
+        const hierarchy = await response.json();
+        renderMenu(hierarchy);
+      }
+    } catch (error) {
+      console.error("Error loading menu:", error);
+    }
+  }
+
+  function renderMenu(hierarchy: string | any) {
+    const carrerasLi = document.createElement("li");
+    carrerasLi.className = "relative group";
+    carrerasLi.innerHTML = `
+      <button class="hover:text-yellow-500 flex items-center">
+        Carreras <i class="fas fa-chevron-down ml-1 text-xs"></i>
+      </button>
+      <ul class="absolute left-0 mt-2 w-56 bg-white text-gray-800 rounded shadow-lg hidden group-hover:block z-50">
+        ${hierarchy
+          .map(
+            (carrera: any) => `
+          <li class="relative group/cuatri px-4 py-2 hover:bg-gray-100">
+            <span class="flex justify-between items-center cursor-pointer">
+              ${carrera.nombre}
+              <i class="fas fa-chevron-right text-xs"></i>
+            </span>
+
+            <ul class="absolute left-full top-0 mt-0 w-48 bg-white text-gray-800 rounded shadow-lg hidden group-hover/cuatri:block">
+              ${carrera.cuatrimestres
+                ?.map(
+                  (cuatri) => `
+                <li class="relative group/materia px-4 py-2 hover:bg-gray-100">
+                  <span class="flex justify-between items-center cursor-pointer">
+                    ${cuatri.cuatri}
+                    <i class="fas fa-chevron-right text-xs"></i>
+                  </span>
+
+                  <ul class="absolute left-full top-0 mt-0 w-48 bg-white text-gray-800 rounded shadow-lg hidden group-hover/materia:block">
+                    ${cuatri.materias
+                      ?.map(
+                        (materia) => `
+                      <li class="relative group/unidad px-4 py-2 hover:bg-gray-100">
+                        <span class="flex justify-between items-center cursor-pointer">
+                          ${materia.nombre}
+                          <i class="fas fa-chevron-right text-xs"></i>
+                        </span>
+
+                        <ul class="absolute left-full top-0 mt-0 w-48 bg-white text-gray-800 rounded shadow-lg hidden group-hover/unidad:block">
+                          ${materia.unidades
+                            ?.map(
+                              (unidad) => `
+                            <li class="px-4 py-2 hover:bg-gray-100">
+                              <a href="/unidades/${unidad.id}">${unidad.titulo}</a>
+                            </li>
+                          `
+                            )
+                            .join("")}
+                        </ul>
+                      </li>
+                    `
+                      )
+                      .join("")}
+                  </ul>
+                </li>
+              `
+                )
+                .join("")}
+            </ul>
+          </li>
+        `
+          )
+          .join("")}
+      </ul>
+    `;
+
+    menuList?.appendChild(carrerasLi);
+  }
+</script>

@@ -1,0 +1,34 @@
+---
+interface Props {
+  data: any;
+}
+
+const { data } = Astro.props;
+---
+
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-4">Panel de Maestro</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <div class="bg-white p-4 rounded shadow">
+      <h3 class="font-bold text-gray-500">Cursos Asignados</h3>
+      <p class="text-2xl">{data.cursos?.length || 0}</p>
+    </div>
+    <div class="bg-white p-4 rounded shadow">
+      <h3 class="font-bold text-gray-500">Mis Unidades</h3>
+      <p class="text-2xl">{data.unidades?.length || 0}</p>
+    </div>
+  </div>
+
+  <div class="bg-white rounded shadow p-6">
+    <h3 class="text-xl font-bold mb-4">Mis Unidades</h3>
+    <ul class="space-y-2">
+      {data.unidades?.map((unidad: any) => (
+        <li class="border-b py-2">
+          <span class="font-semibold">{unidad.titulo}</span>
+          <!-- Add edit button here -->
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

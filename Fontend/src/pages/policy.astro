@@ -1,0 +1,168 @@
+---
+import Layout from "@lyt/Layout.astro";
+import Header from "@/components/section/header.astro";
+import Foot from "@/components/section/footer.astro";
+
+const title = "Política de Privacidad - UPQ Tablón Digital";
+const description =
+  "Política de privacidad y protección de datos de la Universidad Politécnica de Querétaro para el Tablón Digital. Conoce cómo protegemos tu información académica y personal.";
+---
+
+<Layout title={title} descripcion={description}>
+  <Header isnessery={false} />
+
+  <main class="py-8 bg-[#5d699b74] min-h-screen pt-50 pb-10">
+    <div class="max-w-3xl mx-auto px-6">
+      <header class="text-center mb-12 p-8 bg-white rounded-xl shadow-lg">
+        <h1 class="text-4xl text-gray-800 font-light mb-2 tracking-tight">
+          Política de Privacidad
+        </h1>
+        <p class="text-sm italic text-gray-500">
+          Última actualización: Noviembre 2025
+        </p>
+      </header>
+
+      <section class="bg-white rounded-xl p-12 shadow-lg leading-relaxed">
+        <div
+          class="mb-12 p-6 bg-gray-100 border-l-4 border-blue-600 rounded-md"
+        >
+          <p class="text-lg text-gray-700 m-0">
+            En la <strong class="text-gray-800 font-semibold">
+              Universidad Politécnica de Querétaro <i
+                class="text-gray-800 font-semibold bg-amber-400 p-1 rounded-md"
+                >(UPQ)</i
+              ></strong
+            >, valoramos y respetamos su privacidad. Esta Política de Privacidad
+            describe cómo recopilamos, utilizamos, protegemos y compartimos su
+            información académica y personal cuando utiliza el Tablón Digital y
+            nuestros servicios educativos.
+          </p>
+        </div>
+
+        <!-- Secciones -->
+        <article
+          class="mb-12 pb-8 border-b border-gray-200 last:border-none last:mb-0"
+        >
+          <h2 class="text-2xl text-gray-800 font-normal mb-6 tracking-tight">
+            1. Información que Recopilamos
+          </h2>
+
+          <h3 class="text-xl text-gray-700 font-medium mt-8 mb-4">
+            1.1 Información Académica y Personal
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Recopilamos la siguiente información necesaria para su
+            identificación y gestión académica:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-600">
+            <li>
+              <strong>Identificación:</strong> Nombre completo, matrícula, fotografía
+              de perfil.
+            </li>
+            <li>
+              <strong>Contacto:</strong> Correo electrónico institucional, número
+              de teléfono.
+            </li>
+            <li>
+              <strong>Académica:</strong> Carrera, cuatrimestre, grupo, historial
+              de materias y calificaciones.
+            </li>
+            <li>
+              <strong>Credenciales:</strong> Contraseñas cifradas y tokens de acceso.
+            </li>
+          </ul>
+
+          <h3 class="text-xl text-gray-700 font-medium mt-8 mb-4">
+            1.2 Información de Uso del Sistema
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Cuando utiliza el Tablón Digital, automáticamente registramos:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-600">
+            <li>Registros de inicio de sesión y actividad.</li>
+            <li>
+              Interacciones con el contenido (vistas de anuncios, descargas).
+            </li>
+            <li>Dirección IP para fines de seguridad y auditoría.</li>
+          </ul>
+        </article>
+
+        <article
+          class="mb-12 pb-8 border-b border-gray-200 last:border-none last:mb-0"
+        >
+          <h2 class="text-2xl text-gray-800 font-normal mb-6 tracking-tight">
+            2. Cómo Utilizamos su Información
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Utilizamos su información para los siguientes fines educativos y
+            administrativos:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-600">
+            <li>
+              <strong>Gestión Académica:</strong> Control de acceso a recursos, asignación
+              de materias y seguimiento curricular.
+            </li>
+            <li>
+              <strong>Comunicación Institucional:</strong> Envío de avisos importantes,
+              boletines y notificaciones académicas.
+            </li>
+            <li>
+              <strong>Seguridad:</strong> Protección de su cuenta y prevención de
+              accesos no autorizados.
+            </li>
+            <li>
+              <strong>Mejora Continua:</strong> Análisis de uso para optimizar la
+              plataforma y los servicios estudiantiles.
+            </li>
+          </ul>
+        </article>
+
+        <article
+          class="mb-12 pb-8 border-b border-gray-200 last:border-none last:mb-0"
+        >
+          <h2 class="text-2xl text-gray-800 font-normal mb-6 tracking-tight">
+            3. Protección de Datos
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Implementamos medidas de seguridad técnicas y organizativas para
+            proteger sus datos personales contra el acceso no autorizado, la
+            alteración, la divulgación o la destrucción. Sus contraseñas se
+            almacenan de forma segura utilizando algoritmos de hash robustos.
+          </p>
+        </article>
+
+        <p
+          class="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-md italic text-gray-700 my-6"
+        >
+          La UPQ no comparte su información personal con terceros con fines
+          comerciales. Solo se comparte información cuando es requerido por ley
+          o para procesos administrativos oficiales.
+        </p>
+
+        <p
+          class="bg-green-100 border-l-4 border-green-600 p-4 rounded-md text-gray-700 my-6"
+        >
+          Para ejercer sus derechos ARCO (Acceso, Rectificación, Cancelación y
+          Oposición), contáctenos en
+          <a
+            href="mailto:privacidad@upq.edu.mx"
+            class="text-blue-600 hover:text-blue-800 underline"
+          >
+            privacidad@upq.edu.mx
+          </a>
+        </p>
+
+        <div class="bg-gray-100 p-8 rounded-md mt-12 text-center">
+          <p class="italic text-gray-700 text-base">
+            Al utilizar el Tablón Digital de la UPQ, usted reconoce haber leído
+            y comprendido esta Política de Privacidad y acepta el procesamiento
+            de su información académica y personal como se describe en este
+            documento.
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <Foot />
+</Layout>
