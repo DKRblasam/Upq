@@ -56,7 +56,6 @@ const publications = careers.flatMap((career) =>
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
 />
 
-
 <main class="px-5 md:px-8 py-10 max-w-6xl mx-auto">
   <!-- Hero Section -->
   <section class="text-center mb-16">
@@ -77,6 +76,15 @@ const publications = careers.flatMap((career) =>
       profesores. Aprende, descarga y colabora en un espacio abierto de
       conocimiento.
     </p>
+
+    <div class="flex justify-center gap-4 mb-10">
+      <a
+        href="/build"
+        class="bg-yellow-500 text-[#1a1a2e] px-6 py-3 rounded-lg font-bold hover:bg-yellow-400 transition-colors"
+      >
+        Ver Carreras
+      </a>
+    </div>
 
     <!-- Stats Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
@@ -156,11 +164,11 @@ const publications = careers.flatMap((career) =>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {publications.map((pub) => (
             <div class="bg-[#28283f] rounded-xl p-5">
-              <LiteYouTube 
-              videoId={pub.videoId}
-              title={pub.title}
-              backgroundImage={pub.backgroundImage}
-              withShadowImage={true}
+              <LiteYouTube
+                videoId={pub.videoId}
+                title={pub.title}
+                backgroundImage={pub.backgroundImage}
+                withShadowImage={true}
               />
               <h3 class="text-lg font-bold text-gray-100 mb-2">{pub.title}</h3>
               <p class="text-sm text-gray-400 mb-2">

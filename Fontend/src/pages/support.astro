@@ -6,23 +6,26 @@ import Footer from "@/components/section/footer.astro";
 
 <Layout title="Soporte Técnico - UPQ" descripcion="Centro de Soporte">
   <Header isnessery={false} />
-  <main class="bg-gray-50 min-h-screen">
+
+  <main class="bg-gray-900 min-h-screen text-gray-200">
     <!-- Hero Section -->
     <section class="bg-blue-900 text-white py-16">
       <div class="max-w-7xl mx-auto px-6 text-center">
         <h1 class="text-3xl md:text-4xl font-bold mb-4">Centro de Soporte</h1>
         <p class="text-lg text-blue-200">¿Cómo podemos ayudarte hoy?</p>
-        <!-- Search Bar (Visual only for now) -->
+
         <div class="mt-8 max-w-xl mx-auto relative">
           <input
             type="text"
             placeholder="Buscar ayuda, artículos, tutoriales..."
-            class="w-full bg-blue-700 px-6 py-4 rounded-full text-gray-100 focus:outline-none focus:ring-4 focus:ring-yellow-500 border-2 border-blue-800 shadow-lg mr-3"
+            class="w-full bg-blue-800 px-6 py-4 rounded-full text-gray-100 focus:outline-none focus:ring-4 focus:ring-yellow-500 border-2 border-blue-700 shadow-lg"
           />
           <button
-            class="absolute right-3 top-2 bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors"
+            class="absolute right-3 top-2 bg-blue-700 text-white p-2 rounded-full hover:bg-blue-800 transition-colors"
           >
+          <a href="/build">
             <i class="fas fa-search px-2"></i>
+          </a>
           </button>
         </div>
       </div>
@@ -31,215 +34,145 @@ import Footer from "@/components/section/footer.astro";
     <div class="max-w-7xl mx-auto px-6 py-12">
       <!-- Quick Actions -->
       <div class="grid md:grid-cols-3 gap-6 mb-16 -mt-20 relative z-10">
-        <div
-          class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-yellow-500 hover:transform hover:-translate-y-1 transition-all duration-300"
-        >
-          <div
-            class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4 text-yellow-600"
-          >
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg border-b-4 border-yellow-500 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-yellow-900 rounded-lg flex items-center justify-center mb-4 text-yellow-400">
             <i class="fas fa-book text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-2">Guías de Usuario</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            Manuales paso a paso para alumnos y docentes sobre el uso de la
-            plataforma.
+          <h3 class="text-xl font-bold text-gray-100 mb-2">Guías de Usuario</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Manuales paso a paso para alumnos y docentes sobre el uso de la plataforma.
           </p>
-          <a
-            href="#"
-            class="text-blue-600 font-semibold text-sm hover:underline"
-            >Ver guías &rarr;</a
-          >
+          <a href="/build" class="text-blue-400 font-semibold text-sm hover:underline">Ver guías →</a>
         </div>
 
-        <div
-          class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-500 hover:transform hover:-translate-y-1 transition-all duration-300"
-        >
-          <div
-            class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600"
-          >
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg border-b-4 border-blue-500 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center mb-4 text-blue-400">
             <i class="fas fa-key text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-2">Recuperar Acceso</h3>
-          <p class="text-gray-600 text-sm mb-4">
-            ¿Olvidaste tu contraseña o tienes problemas para iniciar sesión?
-          </p>
-          <a
-            href="#"
-            class="text-blue-600 font-semibold text-sm hover:underline"
-            >Restablecer contraseña &rarr;</a
-          >
+          <h3 class="text-xl font-bold text-gray-100 mb-2">Recuperar Acceso</h3>
+          <p class="text-gray-400 text-sm mb-4">¿Olvidaste tu contraseña o tienes problemas para iniciar sesión?</p>
+          <a href="/build" class="text-blue-400 font-semibold text-sm hover:underline">Restablecer contraseña →</a>
         </div>
 
-        <div
-          class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-green-500 hover:transform hover:-translate-y-1 transition-all duration-300"
-        >
-          <div
-            class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 text-green-600"
-          >
+        <div class="bg-gray-800 p-6 rounded-xl shadow-lg border-b-4 border-green-500 hover:-translate-y-1 transition-all duration-300">
+          <div class="w-12 h-12 bg-green-900 rounded-lg flex items-center justify-center mb-4 text-green-400">
             <i class="fas fa-headset text-xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-gray-800 mb-2">
-            Contactar Soporte
-          </h3>
-          <p class="text-gray-600 text-sm mb-4">
-            Abre un ticket de soporte para recibir ayuda personalizada de
-            nuestro equipo.
+          <h3 class="text-xl font-bold text-gray-100 mb-2">Contactar Soporte</h3>
+          <p class="text-gray-400 text-sm mb-4">
+            Abre un ticket de soporte para recibir ayuda personalizada de nuestro equipo.
           </p>
-          <a
-            href="#contact-form"
-            class="text-blue-600 font-semibold text-sm hover:underline"
-            >Crear ticket &rarr;</a
-          >
+          <a href="#contact-form" class="text-blue-400 font-semibold text-sm hover:underline">Crear ticket →</a>
         </div>
       </div>
 
       <!-- FAQs -->
       <section class="mb-16">
-        <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">
-          Preguntas Frecuentes
-        </h2>
+        <h2 class="text-2xl font-bold text-gray-100 mb-8 text-center">Preguntas Frecuentes</h2>
+
         <div class="grid md:grid-cols-2 gap-6">
-          <details class="bg-white rounded-lg shadow-sm p-4 group">
-            <summary
-              class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center list-none"
-            >
+          <details class="bg-gray-800 rounded-lg shadow-sm p-4 group">
+            <summary class="font-semibold text-gray-200 cursor-pointer flex justify-between items-center list-none">
               <span>¿Cómo cambio mi contraseña?</span>
-              <span class="transition group-open:rotate-180">
-                <i class="fas fa-chevron-down text-gray-400"></i>
-              </span>
+              <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
             </summary>
-            <p
-              class="text-gray-600 mt-4 text-sm pl-4 border-l-2 border-yellow-500"
-            >
-              Ve a tu perfil, selecciona "Seguridad" y haz clic en "Cambiar
-              contraseña". Necesitarás tu contraseña actual.
+            <p class="text-gray-400 mt-4 text-sm pl-4 border-l-2 border-yellow-500">
+              Ve a tu perfil y selecciona "Seguridad".
             </p>
           </details>
 
-          <details class="bg-white rounded-lg shadow-sm p-4 group">
-            <summary
-              class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center list-none"
-            >
+          <details class="bg-gray-800 rounded-lg shadow-sm p-4 group">
+            <summary class="font-semibold text-gray-200 cursor-pointer flex justify-between items-center list-none">
               <span>¿Cómo subo mis tareas?</span>
-              <span class="transition group-open:rotate-180">
-                <i class="fas fa-chevron-down text-gray-400"></i>
-              </span>
+              <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
             </summary>
-            <p
-              class="text-gray-600 mt-4 text-sm pl-4 border-l-2 border-yellow-500"
-            >
-              Dentro del curso correspondiente, busca la actividad y haz clic en
-              el botón "Entregar tarea". Podrás subir archivos PDF o imágenes.
+            <p class="text-gray-400 mt-4 text-sm pl-4 border-l-2 border-yellow-500">
+              Busca la actividad en tu curso y usa "Entregar tarea".
             </p>
           </details>
 
-          <details class="bg-white rounded-lg shadow-sm p-4 group">
-            <summary
-              class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center list-none"
-            >
+          <details class="bg-gray-800 rounded-lg shadow-sm p-4 group">
+            <summary class="font-semibold text-gray-200 cursor-pointer flex justify-between items-center list-none">
               <span>No veo mis cursos asignados</span>
-              <span class="transition group-open:rotate-180">
-                <i class="fas fa-chevron-down text-gray-400"></i>
-              </span>
+              <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
             </summary>
-            <p
-              class="text-gray-600 mt-4 text-sm pl-4 border-l-2 border-yellow-500"
-            >
-              Si te acabas de inscribir, puede tardar hasta 24 horas en
-              reflejarse. Si el problema persiste, contacta a Servicios
-              Escolares.
+            <p class="text-gray-400 mt-4 text-sm pl-4 border-l-2 border-yellow-500">
+              Puede tardar 24 horas después de tu inscripción.
             </p>
           </details>
 
-          <details class="bg-white rounded-lg shadow-sm p-4 group">
-            <summary
-              class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center list-none"
-            >
+          <details class="bg-gray-800 rounded-lg shadow-sm p-4 group">
+            <summary class="font-semibold text-gray-200 cursor-pointer flex justify-between items-center list-none">
               <span>¿Cómo contacto a mi profesor?</span>
-              <span class="transition group-open:rotate-180">
-                <i class="fas fa-chevron-down text-gray-400"></i>
-              </span>
+              <span class="transition group-open:rotate-180"><i class="fas fa-chevron-down text-gray-400"></i></span>
             </summary>
-            <p
-              class="text-gray-600 mt-4 text-sm pl-4 border-l-2 border-yellow-500"
-            >
-              Puedes usar la mensajería interna de la plataforma o buscar su
-              correo institucional en la sección de "Información del Curso".
+            <p class="text-gray-400 mt-4 text-sm pl-4 border-l-2 border-yellow-500">
+              Usa la mensajería de la plataforma o revisa "Información del Curso".
             </p>
           </details>
         </div>
       </section>
 
       <!-- Ticket Form -->
-      <section
-        id="contact-form"
-        class="bg-white rounded-xl shadow-lg overflow-hidden"
-      >
+      <section id="contact-form" class="bg-gray-800 rounded-xl shadow-lg overflow-hidden">
         <div class="grid md:grid-cols-5">
-          <div class="md:col-span-2 bg-gray-50 p-8 border-r border-gray-100">
-            <h3 class="text-xl font-bold text-gray-800 mb-4">
-              Horario de Atención
-            </h3>
-            <div class="space-y-4 text-sm text-gray-600">
+          <div class="md:col-span-2 bg-gray-900 p-8 border-r border-gray-700">
+            <h3 class="text-xl font-bold text-gray-100 mb-4">Horario de Atención</h3>
+            <div class="space-y-4 text-sm text-gray-300">
               <p class="flex items-center">
-                <i class="far fa-clock w-6 text-blue-500"></i>
+                <i class="far fa-clock w-6 text-blue-400"></i>
                 Lunes a Viernes: 8:00 AM - 6:00 PM
               </p>
               <p class="flex items-center">
-                <i class="far fa-clock w-6 text-blue-500"></i>
+                <i class="far fa-clock w-6 text-blue-400"></i>
                 Sábados: 9:00 AM - 1:00 PM
               </p>
             </div>
 
-            <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">
-              Contacto Directo
-            </h3>
-            <div class="space-y-4 text-sm text-gray-600">
+            <h3 class="text-xl font-bold text-gray-100 mt-8 mb-4">Contacto Directo</h3>
+            <div class="space-y-4 text-sm text-gray-300">
               <p class="flex items-center">
-                <i class="fas fa-phone w-6 text-green-500"></i>
+                <i class="fas fa-phone w-6 text-green-400"></i>
                 Extensión 1234
               </p>
               <p class="flex items-center">
-                <i class="fas fa-envelope w-6 text-yellow-500"></i>
+                <i class="fas fa-envelope w-6 text-yellow-400"></i>
                 soporte@upq.edu.mx
               </p>
             </div>
           </div>
 
           <div class="md:col-span-3 p-8">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">
-              Enviar Solicitud
-            </h3>
+            <h3 class="text-2xl font-bold text-gray-100 mb-6">Enviar Solicitud</h3>
             <form class="space-y-4">
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1"
-                    >Nombre</label
-                  >
+                  <label class="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
                   <input
+                    id="nombre"
                     type="text"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-700"
+                    class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-100"
                     placeholder="Tu nombre"
                   />
                 </div>
+
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1"
-                    >Matrícula / ID</label
-                  >
+                  <label class="block text-sm font-medium text-gray-300 mb-1">Matrícula / ID</label>
                   <input
+                    id="matricula"
                     type="text"
-                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-700"
+                    class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-100"
                     placeholder="1210..."
                   />
                 </div>
               </div>
 
               <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1"
-                  >Categoría</label
-                >
+                <label class="block text-sm font-medium text-gray-300 mb-1">Categoría</label>
                 <select
-                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-700"
+                  id="categoria"
+                  required
+                  class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
                 >
                   <option>Problemas de Acceso</option>
                   <option>Plataforma Lenta</option>
@@ -249,299 +182,72 @@ import Footer from "@/components/section/footer.astro";
               </div>
 
               <div>
-                <label
-                  class="block text-sm font-medium text-gray-700 mb-1"
-                  class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 text-blue-600"
-                >
-                  <i class="fas fa-key text-xl"></i>
-                </label>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">
-                  Recuperar Acceso
-                </h3>
-                <p class="text-gray-600 text-sm mb-4">
-                  ¿Olvidaste tu contraseña o tienes problemas para iniciar
-                  sesión?
-                </p>
-                <a
-                  href="#"
-                  class="text-blue-600 font-semibold text-sm hover:underline"
-                  >Restablecer contraseña &rarr;</a
-                >
+                <label class="block text-sm font-medium text-gray-300 mb-1">Descripción del problema</label>
+                <textarea
+                  id="descripcion"
+                  rows="4"
+                  required
+                  class="w-full px-4 py-2 bg-gray-900 border border-gray-700 rounded-lg text-gray-100 focus:ring-2 focus:ring-blue-500 outline-none"
+                  placeholder="Describe detalladamente el problema..."
+                ></textarea>
               </div>
 
-              <div
-                class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-green-500 hover:transform hover:-translate-y-1 transition-all duration-300"
+              <button
+                type="submit"
+                class="w-full bg-blue-700 text-white font-bold py-3 rounded-lg hover:bg-blue-800 transition-colors"
               >
-                <div
-                  class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4 text-green-600"
-                >
-                  <i class="fas fa-headset text-xl"></i>
-                </div>
-                <h3 class="text-xl font-bold text-gray-800 mb-2">
-                  Contactar Soporte
-                </h3>
-                <p class="text-gray-600 text-sm mb-4">
-                  Abre un ticket de soporte para recibir ayuda personalizada de
-                  nuestro equipo.
-                </p>
-                <a
-                  href="#contact-form"
-                  class="text-blue-600 font-semibold text-sm hover:underline"
-                  >Crear ticket &rarr;</a
-                >
-              </div>
+                Enviar Ticket
+              </button>
             </form>
-
-            <!-- FAQs -->
-            <section class="mb-16">
-              <h2 class="text-2xl font-bold text-gray-800 mb-8 text-center">
-                Preguntas Frecuentes
-              </h2>
-              <div class="grid md:grid-cols-2 gap-6">
-                <details class="bg-white rounded-lg shadow-sm p-4 group">
-                  <summary
-                    class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center list-none"
-                  >
-                    <span>¿Cómo cambio mi contraseña?</span>
-                    <span class="transition group-open:rotate-180">
-                      <i class="fas fa-chevron-down text-gray-400"></i>
-                    </span>
-                  </summary>
-                  <p
-                    class="text-gray-600 mt-4 text-sm pl-4 border-l-2 border-yellow-500"
-                  >
-                    Ve a tu perfil, selecciona "Seguridad" y haz clic en
-                    "Cambiar contraseña". Necesitarás tu contraseña actual.
-                  </p>
-                </details>
-
-                <details class="bg-white rounded-lg shadow-sm p-4 group">
-                  <summary
-                    class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center list-none"
-                  >
-                    <span>¿Cómo subo mis tareas?</span>
-                    <span class="transition group-open:rotate-180">
-                      <i class="fas fa-chevron-down text-gray-400"></i>
-                    </span>
-                  </summary>
-                  <p
-                    class="text-gray-600 mt-4 text-sm pl-4 border-l-2 border-yellow-500"
-                  >
-                    Dentro del curso correspondiente, busca la actividad y haz
-                    clic en el botón "Entregar tarea". Podrás subir archivos PDF
-                    o imágenes.
-                  </p>
-                </details>
-
-                <details class="bg-white rounded-lg shadow-sm p-4 group">
-                  <summary
-                    class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center list-none"
-                  >
-                    <span>No veo mis cursos asignados</span>
-                    <span class="transition group-open:rotate-180">
-                      <i class="fas fa-chevron-down text-gray-400"></i>
-                    </span>
-                  </summary>
-                  <p
-                    class="text-gray-600 mt-4 text-sm pl-4 border-l-2 border-yellow-500"
-                  >
-                    Si te acabas de inscribir, puede tardar hasta 24 horas en
-                    reflejarse. Si el problema persiste, contacta a Servicios
-                    Escolares.
-                  </p>
-                </details>
-
-                <details class="bg-white rounded-lg shadow-sm p-4 group">
-                  <summary
-                    class="font-semibold text-gray-800 cursor-pointer flex justify-between items-center list-none"
-                  >
-                    <span>¿Cómo contacto a mi profesor?</span>
-                    <span class="transition group-open:rotate-180">
-                      <i class="fas fa-chevron-down text-gray-400"></i>
-                    </span>
-                  </summary>
-                  <p
-                    class="text-gray-600 mt-4 text-sm pl-4 border-l-2 border-yellow-500"
-                  >
-                    Puedes usar la mensajería interna de la plataforma o buscar
-                    su correo institucional en la sección de "Información del
-                    Curso".
-                  </p>
-                </details>
-              </div>
-            </section>
-
-            <!-- Ticket Form -->
-            <section
-              id="contact-form"
-              class="bg-white rounded-xl shadow-lg overflow-hidden"
-            >
-              <div class="grid md:grid-cols-5">
-                <div
-                  class="md:col-span-2 bg-gray-50 p-8 border-r border-gray-100"
-                >
-                  <h3 class="text-xl font-bold text-gray-800 mb-4">
-                    Horario de Atención
-                  </h3>
-                  <div class="space-y-4 text-sm text-gray-600">
-                    <p class="flex items-center">
-                      <i class="far fa-clock w-6 text-blue-500"></i>
-                      Lunes a Viernes: 8:00 AM - 6:00 PM
-                    </p>
-                    <p class="flex items-center">
-                      <i class="far fa-clock w-6 text-blue-500"></i>
-                      Sábados: 9:00 AM - 1:00 PM
-                    </p>
-                  </div>
-
-                  <h3 class="text-xl font-bold text-gray-800 mt-8 mb-4">
-                    Contacto Directo
-                  </h3>
-                  <div class="space-y-4 text-sm text-gray-600">
-                    <p class="flex items-center">
-                      <i class="fas fa-phone w-6 text-green-500"></i>
-                      Extensión 1234
-                    </p>
-                    <p class="flex items-center">
-                      <i class="fas fa-envelope w-6 text-yellow-500"></i>
-                      soporte@upq.edu.mx
-                    </p>
-                  </div>
-                </div>
-
-                <div class="md:col-span-3 p-8">
-                  <h3 class="text-2xl font-bold text-gray-800 mb-6">
-                    Enviar Solicitud
-                  </h3>
-                  <form class="space-y-4">
-                    <div class="grid grid-cols-2 gap-4">
-                      <div>
-                        <label
-                          class="block text-sm font-medium text-gray-700 mb-1"
-                          >Nombre</label
-                        >
-                        <input
-                          id="nombre"
-                          type="text"
-                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-700"
-                          placeholder="Tu nombre"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          class="block text-sm font-medium text-gray-700 mb-1"
-                          >Matrícula / ID</label
-                        >
-                        <input
-                          type="text"
-                          id="matricula"
-                          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-700"
-                          placeholder="1210..."
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label
-                        class="block text-sm font-medium text-gray-700 mb-1"
-                        >Categoría</label
-                      >
-                      <select
-                        required
-                        id="categoria"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white text-gray-700"
-                      >
-                        <option>Problemas de Acceso</option>
-                        <option>Plataforma Lenta</option>
-                        <option>Error en Contenido</option>
-                        <option>Otro</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label
-                        class="block text-sm font-medium text-gray-700 mb-1"
-                        >Descripción del problema</label
-                      >
-                      <textarea
-                        required
-                        rows="4"
-                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none text-gray-700"
-                        placeholder="Describe detalladamente el problema..."
-                        id="descripcion"></textarea>
-                    </div>
-
-                    <button
-                      type="submit"
-                      class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors"
-                    >
-                      Enviar Ticket
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </section>
           </div>
         </div>
         <Footer />
       </section>
-
-      <script>
-        const form = document.querySelector("form");
-
-        form?.addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          const nombre = (
-            document.getElementById("nombre") as HTMLInputElement
-          ).value;
-          const matricula = (
-            document.getElementById("matricula") as HTMLInputElement
-          ).value;
-          const categoria = (
-            document.getElementById("categoria") as HTMLSelectElement
-          ).value;
-          const descripcion = (
-            document.getElementById("descripcion") as HTMLTextAreaElement
-          ).value;
-
-          if (!nombre || !matricula || !descripcion) {
-            alert("Por favor completa todos los campos");
-            return;
-          }
-
-
-          try {
-            const res = await fetch("http://localhost:4000/api/tickets", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                nombre,
-                matricula,
-                categoria,
-                descripcion,
-                fecha: new Date().toISOString(),
-                estado: "Abierto",
-                
-              }),
-            });
-
-            const data = await res.json();
-
-            if (data.success) {
-              alert("Ticket enviado exitosamente");
-              form.reset();
-            } else {
-              alert(data.error || "Error al enviar el ticket");
-            }
-          } catch (error) {
-            console.error(error);
-            alert("Error de conexión");
-          }
-        });
-      </script>
     </div>
-  </main></Layout
->
+  </main>
+
+  <script>
+    const form = document.querySelector("form");
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const nombre= document.getElementById("nombre").value;
+      const matricula = document.getElementById("matricula").value;
+      const categoria = document.getElementById("categoria").value;
+      const descripcion = document.getElementById("descripcion").value;
+
+      if (!nombre || !matricula || !descripcion) {
+        alert("Por favor completa todos los campos");
+        return;
+      }
+
+      try {
+        const res = await fetch("http://localhost:4000/api/tickets", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            nombre,
+            matricula,
+            categoria,
+            descripcion,
+            fecha: new Date().toISOString(),
+            estado: "Abierto",
+          }),
+        });
+
+        const data = await res.json();
+
+        if (data.success) {
+          alert("Ticket enviado exitosamente");
+          form.reset();
+        } else {
+          alert(data.error || "Error al enviar el ticket");
+        }
+      } catch (error) {
+        console.error(error);
+        alert("Error de conexión");
+      }
+    });
+  </script>
+</Layout>

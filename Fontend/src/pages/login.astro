@@ -4,7 +4,7 @@ import "@sty/global.css";
 import "@sty/card.css";
 ---
 
-<Layout title="aña">
+<Layout title="Login" descripcion="Login">
   <main class="flex w-full h-screen justify-center items-center box-border">
     <div class="box h-[420px]">
       <span class="borderLine"></span>
@@ -57,12 +57,13 @@ import "@sty/card.css";
         <p id="errorMessage" class="text-red-500 text-sm hidden mt-2"></p>
 
         <div class="links">
-          <a href="/pri">Crear cuenta</a>
+          <a href="/register">Crear cuenta</a>
         </div>
 
         <!-- From Uiverse.io by Javierrocadev -->
         <button
-          class="overflow-hidden relative w-40 p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group" type="submit"
+          class="overflow-hidden relative w-40 p-2 h-12 bg-black text-white border-none rounded-md text-xl font-bold cursor-pointer relative z-10 group"
+          type="submit"
         >
           Enviar
           <span
@@ -117,8 +118,15 @@ import "@sty/card.css";
           localStorage.setItem("token", result.data.token);
           localStorage.setItem("user", JSON.stringify(result.data.user));
 
-          // Redireccionar
-          window.location.href = "/";
+          const user = result.data.user;
+          alert(user.rol);
+
+          // Redirigir según rol
+          if (user.rol === "User") {
+            window.location.href = "/";
+          } else {
+            window.location.href = "/dashboard";
+          }
         } else {
           if (errorMessage) {
             errorMessage.textContent =

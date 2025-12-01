@@ -19,8 +19,9 @@ export const getData = async (req: Request, res: Response) => {
       const [usuarios] = await db.query(
         "SELECT id, nombre, usuario, rol, matricula FROM usuarios"
       );
+      const [tickets] = await db.query("SELECT * FROM tickets");
 
-      data = { carreras, cursos, unidades, usuarios };
+      data = { carreras, cursos, unidades, usuarios, tickets };
     } else if (rol === "adm") {
       // Fetch only for their carrera
       // Assuming adm is assigned to a carrera.

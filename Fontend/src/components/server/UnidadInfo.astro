@@ -1,0 +1,156 @@
+---
+import { transformHierarchy, getUnitById } from "../../utils/hierarchy";
+
+const { id } = Astro.props;
+
+let unidad = null;
+let subunidades = [];
+let error = null;
+
+try {
+  // 1. Get Hierarchy to find the Unit info
+  const responseHierarchy = await fetch(
+    "http://localhost:4000/api/menu/hierarchy"
+  );
+  if (responseHierarchy.ok) {
+    const data = await responseHierarchy.json();
+    const hierarchy = transformHierarchy(data);
+    unidad = getUnitById(id, "unidad", hierarchy);
+  } else {
+    throw new Error("Failed to load hierarchy");
+  }
+
+  // 2. Get Subunidades for this Unit
+  if (unidad) {
+    const responseSub = await fetch(
+      `http://localhost:4000/api/subunidades/unidad/${id}`
+    );
+    if (responseSub.ok) {
+      subunidades = await responseSub.json();
+
+      // 3. For each subunidad, get Contenidos
+      for (let sub of subunidades) {
+        const responseCont = await fetch(
+          `http://localhost:4000/api/contenidos/subunidad/${sub.id}`
+        );
+        if (responseCont.ok) {
+          sub.contenidos = await responseCont.json();
+        } else {
+          sub.contenidos = [];
+        }
+      }
+    }
+  }
+} catch (e: any) {
+  error = e.message;
+}
+---
+
+{
+  error ? (
+    <div class="text-red-500 mb-4">{error}</div>
+  ) : !unidad ? (
+    <div class="text-red-500 mb-4">Unidad not found</div>
+  ) : (
+    <div>
+      <h1 class="text-3xl font-bold mb-6">{unidad.name}</h1>
+
+      <div class="space-y-8">
+        {subunidades.length === 0 ? (
+          <p class="text-gray-500 italic">No hay contenido en esta unidad.</p>
+        ) : (
+          subunidades.map((sub: any) => (
+            <div class="bg-white p-6 rounded-lg shadow border border-gray-200">
+              <h2 class="text-2xl font-semibold mb-4 border-b pb-2">
+                {sub.titulo}
+              </h2>
+              {sub.descripcion && (
+                <p class="text-gray-600 mb-4">{sub.descripcion}</p>
+              )}
+
+              <div class="space-y-6">
+                {sub.contenidos?.map((cont: any) => (
+                  <div class="pl-4 border-l-4 border-blue-500">
+                    <h3 class="text-lg font-medium text-gray-800">
+                      {cont.titulo}
+                    </h3>
+                    {cont.descripcion && (
+                      <p class="text-sm text-gray-500 mb-2">
+                        {cont.descripcion}
+                      </p>
+                    )}
+
+                    {cont.tipo === "video" && cont.metadata?.video_id && (
+                      <div class="aspect-w-16 aspect-h-9 mt-2">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${cont.metadata.video_id}`}
+                          title={cont.titulo}
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen
+                          class="w-full h-64 rounded shadow-sm"
+                        />
+                      </div>
+                    )}
+
+                    {cont.tipo === "documento" && (
+                      <a
+                        href={cont.url}
+                        target="_blank"
+                        class="inline-flex items-center mt-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded transition-colors"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="h-5 w-5 mr-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                          />
+                        </svg>
+                        Ver Documento
+                      </a>
+                    )}
+
+                    {cont.tipo === "imagen" && (
+                      <img
+                        src={cont.url}
+                        alt={cont.titulo}
+                        class="mt-2 max-w-full h-auto rounded shadow-sm"
+                      />
+                    )}
+
+                    {cont.tipo === "link" && (
+                      <a
+                        href={cont.url}
+                        target="_blank"
+                        class="text-blue-600 hover:underline mt-1 block break-all"
+                      >
+                        {cont.url}
+                      </a>
+                    )}
+
+                    {cont.tipo === "texto" && (
+                      <div class="mt-2 prose max-w-none">
+                        {/* Assuming simple text, if markdown needed, would need a parser */}
+                        {cont.url}
+                      </div>
+                    )}
+                  </div>
+                ))}
+                {(!sub.contenidos || sub.contenidos.length === 0) && (
+                  <p class="text-sm text-gray-400 italic">Sin contenidos.</p>
+                )}
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  )
+}

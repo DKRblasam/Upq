@@ -18,7 +18,7 @@ export const createTicket = async (req: Request, res: Response) => {
 
     // 1. Validar matrícula y obtener rol
     const [users]: any = await db.query(
-      "SELECT * FROM usuarios WHERE usuario = ? LIMIT 1",
+      "SELECT * FROM bzypyzfojxq906t97rwf.usuarios where matricula = ? Limit 1;",
       [matricula]
     );
 
@@ -59,3 +59,20 @@ export const createTicket = async (req: Request, res: Response) => {
     );
   }
 };
+
+export const getTickets = async (req: Request, res: Response) => {
+  try {
+    const [tickets]: any = await db.query("SELECT * FROM tickets");
+    return sendResponse(res, true, tickets, null, 200);
+  } catch (err: any) {
+    console.error(err);
+    return sendResponse(
+      res,
+      false,
+      null,
+      err.sqlMessage || "Error interno al obtener los tickets",
+      500
+    );
+  }
+};
+

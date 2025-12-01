@@ -8,6 +8,7 @@ import maestroRoutes from "./maestro.routes";
 import unidadRoutes from "./unidad.routes";
 import menuRoutes from "@/routes/menu.routes";
 import dashboardRoutes from "@/routes/dashboard.routes";
+import ticketRoutes from "@/routes/ticket.routes";
 
 const router = Router();
 
@@ -19,5 +20,6 @@ router.use("/maestros", maestroRoutes);
 router.use("/unidades", unidadRoutes);
 router.use("/menu", menuRoutes);
 router.use("/dashboard", dashboardRoutes);
+router.use("/tickets", ticketRoutes);
 
 export default router;

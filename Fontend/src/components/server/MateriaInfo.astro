@@ -1,0 +1,49 @@
+---
+import { transformHierarchy, getUnitById } from "../../utils/hierarchy";
+
+const { id } = Astro.props;
+
+let materia = null;
+let error = null;
+
+try {
+  const response = await fetch("http://localhost:4000/api/menu/hierarchy");
+  if (response.ok) {
+    const data = await response.json();
+    const hierarchy = transformHierarchy(data);
+    materia = getUnitById(id, "materia", hierarchy);
+  } else {
+    error = "Failed to load hierarchy";
+  }
+} catch (e: any) {
+  error = e.message;
+}
+---
+
+{
+  error ? (
+    <div class="text-red-500 mb-4">{error}</div>
+  ) : !materia ? (
+    <div class="text-red-500 mb-4">Materia not found</div>
+  ) : (
+    <div>
+      <h1 class="text-3xl font-bold mb-6">{materia.name}</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {materia.children?.map((unidad: any) => (
+          <a
+            href={`/carreras/materias/unidades/${unidad.id}`}
+            class="block p-6 bg-white rounded-lg shadow hover:shadow-md transition-shadow border border-gray-200"
+          >
+            <h2 class="text-xl font-semibold text-gray-800">{unidad.name}</h2>
+            <p class="text-gray-600 mt-2">Ver contenido</p>
+          </a>
+        ))}
+      </div>
+      {materia.children?.length === 0 && (
+        <p class="text-gray-500 italic">
+          No hay unidades registradas en esta materia.
+        </p>
+      )}
+    </div>
+  )
+}

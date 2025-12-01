@@ -1,0 +1,26 @@
+---
+import Layout from "@lyt/Layout.astro";
+import Header from "@cmt/header.astro";
+import Footer from "@cmt/footer.astro";
+import CarreraIsland from "@/components/server/CarreraIsland.astro";
+
+export async function getStaticProps() {
+  const carrera = await fetch(
+    `http://localhost:4000/api/carrera/${Astro.params.id}`
+  ).then((res) => res.json());
+  return {
+    params: { id: carrera.slug },
+    props: { carrera },
+  };
+}
+
+const { carrera, id } = Astro.props;
+---
+
+<Layout title={carrera.slug} descripcion={carrera.descripcion}>
+  <Header isNessery={false} showbtnlogin={false} />
+  <main class="container mx-auto p-4">
+    <CarreraIsland carrera={carrera} />
+  </main>
+  <Footer />
+</Layout>

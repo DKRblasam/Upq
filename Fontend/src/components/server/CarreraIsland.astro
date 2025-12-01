@@ -1,0 +1,38 @@
+---
+// src/components/CarreraIsland.astro
+interface Props {
+  carrera: any;
+}
+const { carrera } = Astro.props;
+
+---
+
+<div class="text-white">
+  <h1 class="text-3xl font-bold mb-4">
+    {carrera.nombre}
+  </h1>
+
+  <p class="text-gray-300 mb-6">{carrera.descripcion}</p>
+
+  <h2 class="text-xl font-bold mb-3">Cuatrimestres</h2>
+
+  <div class="space-y-4">
+    {carrera.cuatrimestres.map((cuatri: any) => (
+      <div class="bg-[#121222] p-4 rounded-lg border border-gray-700">
+        <h3 class="text-yellow-400 font-bold mb-2">
+          Cuatrimestre {cuatri.cuatri}
+        </h3>
+
+        <ul class="space-y-2 ml-4">
+          {cuatri.materias.map((m: any) => (
+            <li>
+              <a href={`/materias/${m.id}`} class="hover:text-yellow-400">
+                {m.nombre}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</div>

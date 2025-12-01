@@ -1,0 +1,21 @@
+---
+import Layout from "@lyt/Layout.astro";
+import Header from "@cmt/header.astro";
+import Footer from "@cmt/footer.astro";
+import CarreraIsland from "@/components/server/CarreraIsland.astro";
+
+export async function cargarDatos() {
+  const respuesta = await fetch("http://localhost:4000/api/menu/hierarchy");
+  const datos = await respuesta.json();
+
+  return datos;
+}
+
+const carrera = await cargarDatos();
+---
+
+<Layout title="Carreras" descripcion="Carreras">
+  <Header isNessery={true} showbtnlogin={false} />
+  <CarreraIsland carrera={carrera} />
+  <Footer />
+</Layout>

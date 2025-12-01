@@ -2,130 +2,128 @@
 import Layout from "@lyt/Layout.astro";
 import Header from "@/components/section/header.astro";
 import Foot from "@/components/section/footer.astro";
+
+const title = "Términos y Condiciones - UPQ Tablón Digital";
+const description =
+  "Términos y condiciones de uso del Tablón Digital de la Universidad Politécnica de Querétaro.";
 ---
 
-<Layout title="Términos y Condiciones - BA Atelier">
-  <Header isnessery={true} showbtnlogin={true} />
+<Layout title={title} descripcion={description}>
+  <Header isnessery={false} />
 
-  <main class="terms-policy py-16 bg-[#fefae074] min-h-screen pt-60">
-    <div class="container max-w-4xl mx-auto px-6">
-      <!-- Encabezado -->
-      <header class="text-center mb-12 bg-white p-10 rounded-xl shadow-md">
-        <h1 class="text-4xl font-light tracking-tight text-[#2c3e50] mb-2">
+  <main class="py-8 bg-[#5d699b74] min-h-screen pt-50 pb-10">
+    <div class="max-w-3xl mx-auto px-6">
+      <header class="text-center mb-12 p-8 bg-gray-800 rounded-xl shadow-lg">
+        <h1 class="text-4xl text-gray-100 font-light mb-2 tracking-tight">
           Términos y Condiciones
         </h1>
-        <p class="text-sm text-gray-500 italic">
-          Última actualización: Junio 2025
+        <p class="text-sm italic text-gray-500">
+          Última actualización: Noviembre 2025
         </p>
       </header>
 
-      <!-- Contenido -->
-      <section
-        class="bg-white rounded-xl shadow-lg px-8 py-12 leading-relaxed text-gray-700"
-      >
-        <div class="space-y-12">
-          <!-- Intro -->
-          <div class="bg-[#f8f9fa] border-l-4 border-[#007bff] p-6 rounded-lg">
-            <p class="text-lg">
-              Bienvenido a <strong>BA Atelier</strong>. Estos términos y
-              condiciones regulan el uso de nuestros servicios de alta costura y
-              consultoría de moda. Al contratarnos, usted acepta cumplir con lo
-              aquí establecido.
-            </p>
-          </div>
+      <section class="bg-[#0d0d1a] rounded-xl p-12 shadow-lg leading-relaxed">
+        <div
+          class="mb-12 p-6 bg-gray-900 border-l-4 border-blue-600 rounded-md"
+        >
+          <p class="text-lg text-gray-300 m-0">
+            Bienvenido al Tablón Digital de <strong
+              class="text-gray-100 font-semibold"
+            >
+              Study <i
+                class="text-gray-800 font-semibold bg-amber-400 p-1 rounded-md"
+                >Hub</i
+              ></strong
+            >. Al acceder y utilizar esta plataforma, usted acepta cumplir con
+            los siguientes términos y condiciones. Si no está de acuerdo con
+            alguna parte de estos términos, le rogamos que no utilice nuestros
+            servicios.
+          </p>
+        </div>
 
-          <!-- Secciones -->
-          <section>
-            <h2 class="section-title">1. Servicios Ofrecidos</h2>
-            <ul class="list-section">
-              <li>
-                <strong>1.1</strong> Diseño de alta costura, consultoría personalizada
-                y eventos.
-              </li>
-              <li>
-                <strong>1.2</strong> Servicios 100% adaptados a cada cliente.
-              </li>
-              <li><strong>1.3</strong> Cada diseño es exclusivo y único.</li>
-            </ul>
-          </section>
+        <!-- Secciones -->
+        <article
+          class="mb-12 pb-8 border-b border-gray-200 last:border-none last:mb-0"
+        >
+          <h2 class="text-2xl text-gray-200 font-normal mb-6 tracking-tight">
+            1. Uso del Sistema
+          </h2>
+          <p class="text-gray-400 mb-4">
+            El Tablón Digital es una herramienta exclusiva para la comunidad
+            universitaria. Su uso está sujeto a las siguientes condiciones:
+          </p>
+          <ul class="list-disc pl-6 space-y-2 text-gray-400">
+            <li>
+              <strong>Acceso Personal:</strong> Las credenciales de acceso (matrícula
+              y contraseña) son personales e intransferibles. Usted es responsable
+              de mantener la confidencialidad de su cuenta.
+            </li>
+            <li>
+              <strong>Finalidad Académica:</strong> La plataforma debe utilizarse
+              exclusivamente para fines académicos, administrativos y de comunicación
+              institucional.
+            </li>
+            <li>
+              <strong>Conducta:</strong> Se prohíbe cualquier uso que pueda dañar,
+              deshabilitar o sobrecargar el sistema, así como cualquier intento de
+              acceso no autorizado.
+            </li>
+          </ul>
+        </article>
 
-          <section>
-            <h2 class="section-title">2. Proceso de Pedidos y Citas</h2>
-            <ul class="list-section">
-              <li>
-                <strong>2.1</strong> Todo servicio inicia con cita previa.
-              </li>
-              <li>
-                <strong>2.2</strong> En consulta se definen alcances, costos y entregas.
-              </li>
-              <li>
-                <strong>2.3</strong> Se solicita anticipo del 50% para comenzar.
-              </li>
-              <li>
-                <strong>2.4</strong> Cambios posteriores pueden generar costos adicionales.
-              </li>
-            </ul>
-          </section>
+        <article
+          class="mb-12 pb-8 border-b border-gray-200 last:border-none last:mb-0"
+        >
+          <h2 class="text-2xl text-gray-200 font-normal mb-6 tracking-tight">
+            2. Propiedad Intelectual
+          </h2>
+          <p class="text-gray-400 mb-4">
+            Todo el contenido presente en el Tablón Digital, incluyendo textos,
+            gráficos, logotipos, iconos, imágenes y software, es propiedad de la
+            UPQ o de sus proveedores de contenido y está protegido por las leyes
+            de propiedad intelectual.
+          </p>
+        </article>
 
-          <section>
-            <h2 class="section-title">3. Pagos y Facturación</h2>
-            <ul class="list-section">
-              <li>
-                <strong>3.1</strong> Cotización personalizada por proyecto.
-              </li>
-              <li><strong>3.2</strong> Anticipo del 50% requerido.</li>
-              <li><strong>3.3</strong> Saldo antes de la entrega.</li>
-              <li>
-                <strong>3.4</strong> Aceptamos efectivo, transferencia y tarjetas.
-              </li>
-              <li><strong>3.5</strong> IVA incluido cuando aplique.</li>
-            </ul>
-          </section>
+        <article
+          class="mb-12 pb-8 border-b border-gray-200 last:border-none last:mb-0"
+        >
+          <h2 class="text-2xl text-gray-200 font-normal mb-6 tracking-tight">
+            3. Privacidad y Datos Personales
+          </h2>
+          <p class="text-gray-400 mb-4">
+            El tratamiento de sus datos personales se rige por nuestra <a
+              href="/policy"
+              class="text-blue-400 hover:text-blue-300 underline"
+              >Política de Privacidad</a
+            >. Al utilizar el sistema, usted consiente el procesamiento de su
+            información según lo establecido en dicha política.
+          </p>
+        </article>
 
-          <!-- Repite este mismo patrón para los puntos 4 a 12 -->
+        <article
+          class="mb-12 pb-8 border-b border-gray-200 last:border-none last:mb-0"
+        >
+          <h2 class="text-2xl text-gray-200 font-normal mb-6 tracking-tight">
+            4. Modificaciones
+          </h2>
+          <p class="text-gray-400 mb-4">
+            La UPQ se reserva el derecho de modificar estos términos en
+            cualquier momento. Las modificaciones entrarán en vigor
+            inmediatamente después de su publicación en el sitio. Se recomienda
+            revisar periódicamente esta sección.
+          </p>
+        </article>
 
-          <section>
-            <h2 class="section-title">12. Jurisdicción y Ley Aplicable</h2>
-            <ul class="list-section">
-              <li>
-                <strong>12.1</strong> Rige la ley de los Estados Unidos Mexicanos.
-              </li>
-              <li>
-                <strong>12.2</strong> Cualquier disputa será resuelta en Querétaro,
-                México.
-              </li>
-              <li>
-                <strong>12.3</strong> Se fomentará la solución amigable antes de
-                instancias legales.
-              </li>
-            </ul>
-          </section>
-
-          <!-- Contacto -->
-          <section class="mt-10 bg-gray-100 p-6 rounded-xl">
-            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Contacto</h2>
-            <p class="mb-3">
-              Para dudas o aclaraciones, puede comunicarse con nosotros:
-            </p>
-            <ul class="space-y-1">
-              <li>
-                <strong>Email:</strong>
-                <a
-                  href="mailto:info@baatelier.com"
-                  class="text-blue-600 underline">info@baatelier.com</a
-                >
-              </li>
-              <li>
-                <strong>WhatsApp:</strong>
-                <a href="tel:+524423119381" class="text-blue-600 underline"
-                  >+52 442 311 9381</a
-                >
-              </li>
-              <li>
-                <strong>Ubicación:</strong> Santiago de Querétaro, Querétaro, México
-              </li>
-            </ul>
-          </section>
+        <div class="bg-gray-100 p-8 rounded-md mt-12 text-center">
+          <p class="italic text-gray-700 text-base">
+            Para cualquier duda o aclaración sobre estos términos, por favor
+            contacte a la administración escolar o envíe un correo a <a
+              href="mailto:soporte@upq.edu.mx"
+              class="text-blue-600 hover:text-blue-800 underline"
+              >soporte@upq.edu.mx</a
+            >.
+          </p>
         </div>
       </section>
     </div>

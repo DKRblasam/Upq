@@ -1,52 +1,26 @@
 ---
-interface Props {
-  showbtnlogin?: boolean;
-  isNessery: boolean;
-}
+// Header.astro
+const { active, user } = Astro.props as {
+  active?: string;
+  user?: { name: string };
+};
 
-const { showbtnlogin, isNessery } = Astro.props;
-
-// Render condicional válido en Astro (NO JSX)
-let loginButtons;
-
-if (showbtnlogin) {
-  loginButtons = (
-    `<
-      id="customer"
-      class="flex items-center w-full md:w-auto justify-between md:justify-start gap-2 md:gap-3"
-    >
-      <a href="/dashboard">
-        <button class="teacher-access-btn bg-red-500 text-[#1a1a2e] rounded-lg px-5 py-3 text-[15px] font-semibold cursor-pointer flex items-center justify-center hover:bg-yellow-600 transition-colors w-[48%] md:w-auto">
-          <i class="fas fa-arrow-right mr-2"></i>
-          Acceso Profesores
-        </button>
-      </a>
-
-      <button class="bg-blue-600 text-white rounded-lg px-4 py-3 cursor-pointer flex items-center justify-center hover:bg-green-700 transition-colors w-[48%] md:w-auto">
-        <i class="fas fa-pencil-alt"></i>
-      </button>
-    </div>`
-  );
-} else {
-  
-  loginButtons = (`<div class="w-[48%]">hola</div>`);
-
+function logout() {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.href = "/login";
+  }
 }
 ---
 
-<header
-  class="flex flex-col md:flex-row justify-between items-start md:items-center px-5 md:px-8 py-4 bg-[#0d0d1a] gap-4"
->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center px-5 md:px-8 py-4 bg-[#0d0d1a] gap-4">
   <div class="flex items-center mb-4 md:mb-0">
     <div class="flex items-center mb-6">
-      <div
-        class="w-15 h-12 rounded-lg flex items-center justify-center mr-2 shadow-lg shadow-blue-500/80"
-      >
+      <div class="w-15 h-12 rounded-lg flex items-center justify-center mr-2 shadow-lg shadow-blue-500/80">
         <span class="text-white font-bold text-xl">Study</span>
       </div>
-      <div
-        class="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mr-4 shadow-lg shadow-blue-500/20"
-      >
+      <div class="w-12 h-12 rounded-lg bg-yellow-500 flex items-center justify-center mr-4 shadow-lg shadow-blue-500/20">
         <span class="text-black font-bold text-xl">hub</span>
       </div>
       <div>
@@ -59,121 +33,69 @@ if (showbtnlogin) {
   </div>
 
   <div class="elements-nav-msd w-full md:w-auto">
-    <nav id="dynamic-menu" class="bg-gray-800 text-white px-8 py-2 hidden">
+    <nav id="dynamic-menu" class="bg-gray-800 text-white px-8 py-2 rounded-lg">
       <ul class="flex space-x-6" id="menu-list">
-        <li><a href="/" class="hover:text-yellow-500">Inicio</a></li>
+        <li>
+          <a
+            href="/"
+            class={`hover:text-yellow-500 ${active === 'inicio' ? 'text-yellow-500 font-bold' : ''}`}
+          >Inicio</a>
+        </li>
+        <li>
+          <a
+            href="/carrera"
+            class={`hover:text-yellow-500 ${active === 'carrera' ? 'text-yellow-500 font-bold' : ''}`}
+          >Carreras</a>
+        </li>
       </ul>
     </nav>
   </div>
 
-  {loginButtons}
+  <div id="customer" class="flex items-center w-full md:w-auto justify-between md:justify-start gap-2 md:gap-3">
+    {user && (
+      <>
+        <a href="/dashboard">
+          <button
+            type="button"
+            class="flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-emerald-500 hover:text-gray-500 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group text-black"
+          >
+            Dashboard
+            <svg
+              class="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-gray-50 text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
+              viewBox="0 0 16 19"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+                class="fill-gray-800 group-hover:fill-gray-800"
+              ></path>
+            </svg>
+          </button>
+        </a>
+
+        <button
+          class="bg-blue-600 text-white rounded-lg px-4 py-3 cursor-pointer flex items-center justify-center hover:bg-green-700 transition-colors w-[48%] md:w-auto"
+          client:load
+        >
+          <i class="fas fa-pencil-alt"></i>
+        </button>
+
+        <button
+          class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
+          onClick={() => logout()}
+          client:load
+        >
+          Cerrar Sesión
+        </button>
+      </>
+    )}
+
+    {!user && (
+      <a href="/login">
+        <button class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition-colors">
+          Iniciar Sesión
+        </button>
+      </a>
+    )}
+  </div>
 </header>
-
-<script>
-  const token = localStorage.getItem("token");
-  const userStr = localStorage.getItem("user");
-  const customerDiv = document.getElementById("customer");
-  const menuNav = document.getElementById("dynamic-menu");
-  const menuList = document.getElementById("menu-list");
-
-  if (userStr) {
-    const user = JSON.parse(userStr);
-    console.log(user);
-    console.log(user.rol);
-    console.log(token);
-
-    menuNav?.classList.remove("hidden");
-
-    if (user.rol === "user") {
-      if (customerDiv) customerDiv.style.display = "none";
-    }
-
-    fetchHierarchy(token);
-  }
-
-  async function fetchHierarchy(token: string | any) {
-    try {
-      const response = await fetch("http://localhost:4000/api/menu/hierarchy", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.headers);
-
-      if (response.ok) {
-        const hierarchy = await response.json();
-        renderMenu(hierarchy);
-      }
-    } catch (error) {
-      console.error("Error loading menu:", error);
-    }
-  }
-
-  function renderMenu(hierarchy: string | any) {
-    const carrerasLi = document.createElement("li");
-    carrerasLi.className = "relative group";
-    carrerasLi.innerHTML = `
-      <button class="hover:text-yellow-500 flex items-center">
-        Carreras <i class="fas fa-chevron-down ml-1 text-xs"></i>
-      </button>
-      <ul class="absolute left-0 mt-2 w-56 bg-white text-gray-800 rounded shadow-lg hidden group-hover:block z-50">
-        ${hierarchy
-          .map(
-            (carrera: any) => `
-          <li class="relative group/cuatri px-4 py-2 hover:bg-gray-100">
-            <span class="flex justify-between items-center cursor-pointer">
-              ${carrera.nombre}
-              <i class="fas fa-chevron-right text-xs"></i>
-            </span>
-
-            <ul class="absolute left-full top-0 mt-0 w-48 bg-white text-gray-800 rounded shadow-lg hidden group-hover/cuatri:block">
-              ${carrera.cuatrimestres
-                ?.map(
-                  (cuatri) => `
-                <li class="relative group/materia px-4 py-2 hover:bg-gray-100">
-                  <span class="flex justify-between items-center cursor-pointer">
-                    ${cuatri.cuatri}
-                    <i class="fas fa-chevron-right text-xs"></i>
-                  </span>
-
-                  <ul class="absolute left-full top-0 mt-0 w-48 bg-white text-gray-800 rounded shadow-lg hidden group-hover/materia:block">
-                    ${cuatri.materias
-                      ?.map(
-                        (materia) => `
-                      <li class="relative group/unidad px-4 py-2 hover:bg-gray-100">
-                        <span class="flex justify-between items-center cursor-pointer">
-                          ${materia.nombre}
-                          <i class="fas fa-chevron-right text-xs"></i>
-                        </span>
-
-                        <ul class="absolute left-full top-0 mt-0 w-48 bg-white text-gray-800 rounded shadow-lg hidden group-hover/unidad:block">
-                          ${materia.unidades
-                            ?.map(
-                              (unidad) => `
-                            <li class="px-4 py-2 hover:bg-gray-100">
-                              <a href="/unidades/${unidad.id}">${unidad.titulo}</a>
-                            </li>
-                          `
-                            )
-                            .join("")}
-                        </ul>
-                      </li>
-                    `
-                      )
-                      .join("")}
-                  </ul>
-                </li>
-              `
-                )
-                .join("")}
-            </ul>
-          </li>
-        `
-          )
-          .join("")}
-      </ul>
-    `;
-
-    menuList?.appendChild(carrerasLi);
-  }
-</script>

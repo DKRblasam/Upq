@@ -12,6 +12,8 @@ import authRoutes from "@/routes/auth.routes";
 import dashboardRoutes from "@/routes/dashboard.routes";
 import ticketRoutes from "@/routes/ticket.routes";
 import menuRoutes from "@/routes/menu.routes";
+import subunidadRoutes from "@/routes/subunidad.routes";
+import contenidoRoutes from "@/routes/contenido.routes";
 
 const app: Application = express();
 
@@ -32,5 +34,7 @@ app.use("/api/cursos", cursoRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/tickets", ticketRoutes);
 app.use("/api/menu", menuRoutes);
+app.use("/api/subunidades", subunidadRoutes);
+app.use("/api/contenidos", contenidoRoutes);
 
 export default app;
